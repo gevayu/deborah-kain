@@ -1,9 +1,11 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { useState, useCallback, useEffect } from "react";
 import { X, ChevronLeft, ChevronRight } from "lucide-react";
+import OptimizedImage from "@/components/OptimizedImage";
 
 interface GalleryImage {
   src: string;
+  webp?: string;
   alt: string;
 }
 
@@ -47,11 +49,14 @@ const ImageGallery = ({ images, title }: ImageGalleryProps) => {
               className="overflow-hidden rounded-xl aspect-[3/2] cursor-pointer"
               onClick={() => setLightboxIndex(i)}
             >
-              <img
+              <OptimizedImage
                 src={img.src}
+                webpSrc={img.webp}
                 alt={img.alt}
                 className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
-                loading="lazy"
+                width={400}
+                height={267}
+                sizes="(max-width: 768px) 50vw, 33vw"
               />
             </motion.div>
           ))}

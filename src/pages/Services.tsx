@@ -2,12 +2,19 @@ import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import OptimizedImage from "@/components/OptimizedImage";
 import servicesHero from "@/assets/services-hero.jpg";
+import servicesHeroWebp from "@/assets/services-hero.jpg?format=webp&quality=80";
 import soulCollageHero from "@/assets/soul-collage-hero.jpg";
+import soulCollageHeroWebp from "@/assets/soul-collage-hero.jpg?format=webp&quality=80";
 import phototherapyHero from "@/assets/phototherapy-hero.jpg";
+import phototherapyHeroWebp from "@/assets/phototherapy-hero.jpg?format=webp&quality=80";
 import workshopCombined from "@/assets/workshop-combined.jpg";
+import workshopCombinedWebp from "@/assets/workshop-combined.jpg?format=webp&quality=80";
 import workshopAnnual from "@/assets/workshop-annual.jpg";
+import workshopAnnualWebp from "@/assets/workshop-annual.jpg?format=webp&quality=80";
 import workshopSummer from "@/assets/workshop-summer.jpg";
+import workshopSummerWebp from "@/assets/workshop-summer.jpg?format=webp&quality=80";
 
 const services = [
   {
@@ -15,30 +22,35 @@ const services = [
     desc: "בואו לחוות סדרת סדנאות חווייתיות והמעצימות את הקול הפנימי. נעמיק יחד בתהליכים המשלבים עבודה עם דימויים, יצירה אינטואיטיבית ותשומת לב עמוקה לרגש. בסדנאות שלנו, כל משתתפת ומשתתף מקבלים מקום להיות, לחקור ולהעז — ללא שיפוט וללא צורך בכישרון אמנותי.",
     link: null,
     image: workshopCombined,
+    webp: workshopCombinedWebp,
   },
   {
     title: "ליווי אישי",
     desc: "לצד עבודה קבוצתית, ישנה אפשרות לתמיכה אישית, אחד על אחד, במפגשים המותאמים עבורך. יחד נזהה מה מבקש להתגלות ולבוא לידי ביטוי בעולמך, ונעבוד בגישה עדינה, קשובה, ומעודדת צמיחה פנימית. ליווי אישי רוחני נועד גם לתמיכה וליווי במצבי שבר — התבוננות, גילוי ושהות ביחד בשקט ובדיאלוג.",
     link: null,
     image: workshopAnnual,
+    webp: workshopAnnualWebp,
   },
   {
     title: "סדנאות סול קולאז'",
     desc: "מסע אל הקולות שבפנים — יצירת קלפים אישיים שמייצגים את החלקים השונים בנו, דרך תמונות, אינטואיציה ודיאלוג פנימי.",
     link: "/services/soul-collage",
     image: soulCollageHero,
+    webp: soulCollageHeroWebp,
   },
   {
     title: "סדנאות פוטותרפיה",
     desc: "מגלים את עצמכם דרך העדשה — שילוב ייחודי של צילום ועבודה רגשית עמוקה לגילוי עצמי אמיתי.",
     link: "/services/phototherapy",
     image: phototherapyHero,
+    webp: phototherapyHeroWebp,
   },
   {
     title: "סדנאות ייעודיות לארגונים ולמוסדות",
     desc: "אנו מגיעים גם אל צוותים וארגונים: מביאים את עולם ה-SoulCollage וסדנאות ההתפתחות למרחבים מקצועיים, כפתרון להפגת עומס, לבניית אמון, שיפור תקשורת צוותית, יצירה משותפת וגיבוש.",
     link: null,
     image: workshopSummer,
+    webp: workshopSummerWebp,
   },
   {
     title: "קורסים והרצאות עומק",
@@ -55,7 +67,16 @@ const Services = () => {
       {/* Hero */}
       <section className="relative pt-24 pb-16 md:pt-32 md:pb-24">
         <div className="absolute inset-0">
-          <img src={servicesHero} alt="" className="w-full h-full object-cover" />
+          <OptimizedImage
+            src={servicesHero}
+            webpSrc={servicesHeroWebp}
+            alt=""
+            className="w-full h-full object-cover"
+            loading="eager"
+            fetchPriority="high"
+            width={1920}
+            height={1080}
+          />
           <div className="absolute inset-0 bg-gradient-to-b from-background/70 via-background/50 to-background" />
         </div>
         <div className="relative container mx-auto px-4 text-center">
@@ -94,7 +115,15 @@ const Services = () => {
               >
                 {service.image && (
                   <div className="aspect-video overflow-hidden">
-                    <img src={service.image} alt={service.title} className="w-full h-full object-cover" />
+                    <OptimizedImage
+                      src={service.image}
+                      webpSrc={(service as any).webp}
+                      alt={service.title}
+                      className="w-full h-full object-cover"
+                      width={600}
+                      height={338}
+                      sizes="(max-width: 768px) 100vw, 50vw"
+                    />
                   </div>
                 )}
                 <div className="p-6">

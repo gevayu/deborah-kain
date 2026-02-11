@@ -3,19 +3,26 @@ import { useState, useCallback, useEffect } from "react";
 import { X, ChevronLeft, ChevronRight } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import OptimizedImage from "@/components/OptimizedImage";
 import phototherapyHero from "@/assets/phototherapy-hero.jpg";
+import phototherapyHeroWebp from "@/assets/phototherapy-hero.jpg?format=webp&quality=80";
 import photo1 from "@/assets/phototherapy-1.jpg";
 import photo2 from "@/assets/phototherapy-2.jpg";
 import photo3 from "@/assets/phototherapy-3.jpg";
 import photo4 from "@/assets/phototherapy-4.jpg";
 import photo5 from "@/assets/phototherapy-5.jpg";
+import photo1Webp from "@/assets/phototherapy-1.jpg?format=webp&quality=80";
+import photo2Webp from "@/assets/phototherapy-2.jpg?format=webp&quality=80";
+import photo3Webp from "@/assets/phototherapy-3.jpg?format=webp&quality=80";
+import photo4Webp from "@/assets/phototherapy-4.jpg?format=webp&quality=80";
+import photo5Webp from "@/assets/phototherapy-5.jpg?format=webp&quality=80";
 
 const galleryImages = [
-  { src: photo1, alt: "עבודת פוטותרפיה 1" },
-  { src: photo2, alt: "עבודת פוטותרפיה 2" },
-  { src: photo3, alt: "עבודת פוטותרפיה 3" },
-  { src: photo4, alt: "עבודת פוטותרפיה 4" },
-  { src: photo5, alt: "עבודת פוטותרפיה 5" },
+  { src: photo1, webp: photo1Webp, alt: "עבודת פוטותרפיה 1" },
+  { src: photo2, webp: photo2Webp, alt: "עבודת פוטותרפיה 2" },
+  { src: photo3, webp: photo3Webp, alt: "עבודת פוטותרפיה 3" },
+  { src: photo4, webp: photo4Webp, alt: "עבודת פוטותרפיה 4" },
+  { src: photo5, webp: photo5Webp, alt: "עבודת פוטותרפיה 5" },
 ];
 
 const Phototherapy = () => {
@@ -43,7 +50,16 @@ const Phototherapy = () => {
       {/* Hero */}
       <section className="relative pt-24 pb-16 md:pt-32 md:pb-24">
         <div className="absolute inset-0">
-          <img src={phototherapyHero} alt="" className="w-full h-full object-cover" />
+          <OptimizedImage
+            src={phototherapyHero}
+            webpSrc={phototherapyHeroWebp}
+            alt=""
+            className="w-full h-full object-cover"
+            loading="eager"
+            fetchPriority="high"
+            width={1920}
+            height={1080}
+          />
           <div className="absolute inset-0 bg-gradient-to-b from-background/70 via-background/50 to-background" />
         </div>
         <div className="relative container mx-auto px-4 text-center">
@@ -155,11 +171,14 @@ const Phototherapy = () => {
                     className="overflow-hidden rounded-xl aspect-[3/2] cursor-pointer"
                     onClick={() => setLightboxIndex(i)}
                   >
-                    <img
+                    <OptimizedImage
                       src={img.src}
+                      webpSrc={img.webp}
                       alt={img.alt}
                       className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
-                      loading="lazy"
+                      width={400}
+                      height={267}
+                      sizes="(max-width: 768px) 50vw, 33vw"
                     />
                   </motion.div>
                 ))}

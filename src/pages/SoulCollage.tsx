@@ -2,21 +2,29 @@ import { motion } from "framer-motion";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import ImageGallery from "@/components/ImageGallery";
+import OptimizedImage from "@/components/OptimizedImage";
 import soulCollageHero from "@/assets/soul-collage-hero.jpg";
+import soulCollageHeroWebp from "@/assets/soul-collage-hero.jpg?format=webp&quality=80";
 import sc1 from "@/assets/soulcollage-1.jpg";
 import sc2 from "@/assets/soulcollage-2.jpg";
 import sc3 from "@/assets/soulcollage-3.jpg";
 import sc4 from "@/assets/soulcollage-4.jpg";
 import sc5 from "@/assets/soulcollage-5.jpg";
 import sc6 from "@/assets/soulcollage-6.jpg";
+import sc1Webp from "@/assets/soulcollage-1.jpg?format=webp&quality=80";
+import sc2Webp from "@/assets/soulcollage-2.jpg?format=webp&quality=80";
+import sc3Webp from "@/assets/soulcollage-3.jpg?format=webp&quality=80";
+import sc4Webp from "@/assets/soulcollage-4.jpg?format=webp&quality=80";
+import sc5Webp from "@/assets/soulcollage-5.jpg?format=webp&quality=80";
+import sc6Webp from "@/assets/soulcollage-6.jpg?format=webp&quality=80";
 
 const galleryImages = [
-  { src: sc1, alt: "עבודת סול קולאז' 1" },
-  { src: sc2, alt: "עבודת סול קולאז' 2" },
-  { src: sc3, alt: "עבודת סול קולאז' 3" },
-  { src: sc4, alt: "עבודת סול קולאז' 4" },
-  { src: sc5, alt: "עבודת סול קולאז' 5" },
-  { src: sc6, alt: "עבודת סול קולאז' 6" },
+  { src: sc1, webp: sc1Webp, alt: "עבודת סול קולאז' 1" },
+  { src: sc2, webp: sc2Webp, alt: "עבודת סול קולאז' 2" },
+  { src: sc3, webp: sc3Webp, alt: "עבודת סול קולאז' 3" },
+  { src: sc4, webp: sc4Webp, alt: "עבודת סול קולאז' 4" },
+  { src: sc5, webp: sc5Webp, alt: "עבודת סול קולאז' 5" },
+  { src: sc6, webp: sc6Webp, alt: "עבודת סול קולאז' 6" },
 ];
 
 const SoulCollage = () => {
@@ -27,7 +35,16 @@ const SoulCollage = () => {
       {/* Hero */}
       <section className="relative pt-24 pb-16 md:pt-32 md:pb-24">
         <div className="absolute inset-0">
-          <img src={soulCollageHero} alt="" className="w-full h-full object-cover" />
+          <OptimizedImage
+            src={soulCollageHero}
+            webpSrc={soulCollageHeroWebp}
+            alt=""
+            className="w-full h-full object-cover"
+            loading="eager"
+            fetchPriority="high"
+            width={1920}
+            height={1080}
+          />
           <div className="absolute inset-0 bg-gradient-to-b from-background/70 via-background/50 to-background" />
         </div>
         <div className="relative container mx-auto px-4 text-center">
