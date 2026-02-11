@@ -129,7 +129,7 @@ const BlogPost = () => {
             {post.image_url && (
               <div className="aspect-video rounded-2xl overflow-hidden mb-10 relative">
                 <img src={post.image_url} alt={post.title} className="w-full h-full object-cover" />
-                <div className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-black/40 to-transparent" />
+                <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-black/60 to-transparent" />
               </div>
             )}
 
@@ -154,7 +154,7 @@ const BlogPost = () => {
                   {prevPost.image_url && (
                     <div className="w-20 h-20 md:w-24 md:h-24 rounded-xl overflow-hidden flex-shrink-0 relative">
                       <img src={prevPost.image_url} alt={prevPost.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
-                      <div className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-black/30 to-transparent" />
+                      <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-black/50 to-transparent" />
                     </div>
                   )}
                   <div className="flex-1 min-w-0">
@@ -180,7 +180,7 @@ const BlogPost = () => {
                   {nextPost.image_url && (
                     <div className="w-20 h-20 md:w-24 md:h-24 rounded-xl overflow-hidden flex-shrink-0 relative">
                       <img src={nextPost.image_url} alt={nextPost.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
-                      <div className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-black/30 to-transparent" />
+                      <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-black/50 to-transparent" />
                     </div>
                   )}
                   <div className="flex-1 min-w-0">
