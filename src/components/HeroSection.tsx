@@ -30,8 +30,8 @@ const Particles = () => {
             left: `${p.x}%`,
             top: `${p.y}%`,
             opacity: 0,
-            background: `radial-gradient(circle, hsl(var(--primary) / 1), hsl(var(--primary) / 0.4))`,
-            boxShadow: `0 0 ${p.size * 3}px ${p.size}px hsl(var(--primary) / 0.5)`,
+            background: `radial-gradient(circle, rgba(255,255,255,1), rgba(255,255,255,0.4))`,
+            boxShadow: `0 0 ${p.size * 3}px ${p.size}px rgba(255,255,255,0.5)`,
           }}
           animate={{
             y: [0, -100, -220],
