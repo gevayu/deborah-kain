@@ -37,7 +37,7 @@ const Contact = () => {
             transition={{ duration: 0.8 }}
             className="space-y-8"
           >
-            <div className="bg-card/60 backdrop-blur-sm rounded-2xl p-8 border border-border/50 space-y-4 text-center">
+            <div className="bg-card/60 backdrop-blur-sm rounded-2xl p-8 border border-border/50 space-y-6 text-center">
               <div>
                 <h3 className="text-lg font-heading font-bold text-foreground mb-1">טלפון</h3>
                 <a href="tel:+972543098970" className="text-primary font-body text-lg hover:underline" dir="ltr">054-309-8970</a>
@@ -45,6 +45,10 @@ const Contact = () => {
               <div>
                 <h3 className="text-lg font-heading font-bold text-foreground mb-1">אימייל</h3>
                 <a href="mailto:dvorakainrainish@gmail.com" className="text-primary font-body hover:underline">dvorakainrainish@gmail.com</a>
+              </div>
+              <div>
+                <h3 className="text-lg font-heading font-bold text-foreground mb-1">כתובת</h3>
+                <p className="text-muted-foreground font-body">רחוב תרצה 10, רמת גן</p>
               </div>
             </div>
 
