@@ -1,7 +1,25 @@
-import { motion, useScroll, useTransform } from "framer-motion";
-import { useMemo, useRef } from "react";
+import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion";
+import { useMemo, useRef, useState, useEffect, useCallback } from "react";
 import heroBg from "@/assets/hero-bg.jpg";
 import heroBgWebp from "@/assets/hero-bg.jpg?format=webp&quality=80";
+import heroWater from "@/assets/hero-water.jpg";
+import heroWaterWebp from "@/assets/hero-water.jpg?format=webp&quality=80";
+import heroEarth from "@/assets/hero-earth.jpg";
+import heroEarthWebp from "@/assets/hero-earth.jpg?format=webp&quality=80";
+import heroFire from "@/assets/hero-fire.jpg";
+import heroFireWebp from "@/assets/hero-fire.jpg?format=webp&quality=80";
+import heroClouds from "@/assets/hero-clouds.jpg";
+import heroCloudsWebp from "@/assets/hero-clouds.jpg?format=webp&quality=80";
+
+const heroImages = [
+  { jpg: heroBg, webp: heroBgWebp },
+  { jpg: heroWater, webp: heroWaterWebp },
+  { jpg: heroEarth, webp: heroEarthWebp },
+  { jpg: heroFire, webp: heroFireWebp },
+  { jpg: heroClouds, webp: heroCloudsWebp },
+];
+
+const INTERVAL = 6000;
 
 const Particles = () => {
   const particles = useMemo(
@@ -54,6 +72,17 @@ const Particles = () => {
 
 const HeroSection = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  const nextImage = useCallback(() => {
+    setCurrentIndex((prev) => (prev + 1) % heroImages.length);
+  }, []);
+
+  useEffect(() => {
+    const timer = setInterval(nextImage, INTERVAL);
+    return () => clearInterval(timer);
+  }, [nextImage]);
+
   const { scrollYProgress } = useScroll({
     target: sectionRef,
     offset: ["start start", "end start"],
@@ -62,22 +91,33 @@ const HeroSection = () => {
 
   return (
     <section ref={sectionRef} id="hero" className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Background Image with parallax */}
+      {/* Background Images with crossfade */}
       <motion.div className="absolute inset-0" style={{ y: bgY }}>
-        <picture>
-          <source srcSet={heroBgWebp} type="image/webp" />
-          <img
-            src={heroBg}
-            alt=""
-            className="w-full h-full object-cover"
-            loading="eager"
-            decoding="sync"
-            width={1920}
-            height={1080}
-            {...{ fetchPriority: "high" } as any}
-          />
-        </picture>
-        <div className="absolute inset-0 bg-gradient-to-b from-background/60 via-background/40 to-background/90" />
+        <AnimatePresence mode="sync">
+          <motion.div
+            key={currentIndex}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 1.5, ease: "easeInOut" }}
+            className="absolute inset-0"
+          >
+            <picture>
+              <source srcSet={heroImages[currentIndex].webp} type="image/webp" />
+              <img
+                src={heroImages[currentIndex].jpg}
+                alt=""
+                className="w-full h-full object-cover"
+                loading={currentIndex === 0 ? "eager" : "lazy"}
+                decoding={currentIndex === 0 ? "sync" : "async"}
+                width={1920}
+                height={1080}
+                {...(currentIndex === 0 ? { fetchPriority: "high" } as any : {})}
+              />
+            </picture>
+          </motion.div>
+        </AnimatePresence>
+        <div className="absolute inset-0 bg-gradient-to-b from-background/60 via-background/40 to-background/90 z-[1]" />
       </motion.div>
 
       {/* Floating particles */}
@@ -127,6 +167,22 @@ const HeroSection = () => {
             </a>
           </motion.div>
         </motion.div>
+      </div>
+
+      {/* Image indicators */}
+      <div className="absolute bottom-20 left-1/2 -translate-x-1/2 z-10 flex gap-2">
+        {heroImages.map((_, i) => (
+          <button
+            key={i}
+            onClick={() => setCurrentIndex(i)}
+            className={`w-2 h-2 rounded-full transition-all duration-500 ${
+              i === currentIndex
+                ? "bg-primary/80 w-6"
+                : "bg-primary/30 hover:bg-primary/50"
+            }`}
+            aria-label={`תמונה ${i + 1}`}
+          />
+        ))}
       </div>
 
       {/* Scroll indicator */}
