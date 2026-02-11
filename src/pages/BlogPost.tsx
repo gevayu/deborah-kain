@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { ArrowRight, ArrowLeft, Share2 } from "lucide-react";
-import { FaWhatsapp, FaFacebookF } from "react-icons/fa";
+import { FaWhatsapp, FaFacebookF, FaInstagram, FaLinkedinIn } from "react-icons/fa";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { supabase } from "@/integrations/supabase/client";
@@ -161,6 +161,24 @@ const BlogPost = () => {
                 aria-label="שיתוף בפייסבוק"
               >
                 <FaFacebookF className="w-5 h-5" />
+              </a>
+              <a
+                href={`https://www.instagram.com/`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-[#E4405F]/10 text-[#E4405F] hover:bg-[#E4405F]/20 transition-colors"
+                aria-label="שיתוף באינסטגרם"
+              >
+                <FaInstagram className="w-5 h-5" />
+              </a>
+              <a
+                href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(window.location.href)}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-[#0A66C2]/10 text-[#0A66C2] hover:bg-[#0A66C2]/20 transition-colors"
+                aria-label="שיתוף בלינקדאין"
+              >
+                <FaLinkedinIn className="w-5 h-5" />
               </a>
             </div>
           </motion.div>
