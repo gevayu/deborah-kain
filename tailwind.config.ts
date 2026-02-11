@@ -14,8 +14,8 @@ export default {
     },
     extend: {
       fontFamily: {
-        heading: ['"Noto Sans Hebrew"', 'sans-serif'],
-        body: ['"Noto Sans Hebrew"', 'sans-serif'],
+        heading: ['"Dialect PM"', '"Dialect PM PS"', 'sans-serif'],
+        body: ['"Dialect PM"', '"Dialect PM PS"', 'sans-serif'],
       },
       colors: {
         border: "hsl(var(--border))",
