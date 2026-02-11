@@ -5,10 +5,10 @@ const IntroSection = () => {
     <section className="py-20 md:py-28 bg-warm-gradient">
       <div className="container mx-auto px-4">
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
+          initial={{ opacity: 0, y: 30, filter: "blur(8px)" }}
+          whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
           viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.8 }}
+          transition={{ duration: 1.2, ease: "easeOut" }}
           className="max-w-3xl mx-auto text-center"
         >
           <p className="text-xl md:text-2xl text-foreground font-body leading-loose">

@@ -28,7 +28,7 @@ const TestimonialsSection = () => {
           מה אומרים עלינו
         </motion.h2>
 
-        <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+        <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto relative">
           {testimonials.map((t, index) => (
             <motion.div
               key={index}
@@ -38,7 +38,14 @@ const TestimonialsSection = () => {
               transition={{ duration: 0.6, delay: index * 0.2 }}
               className="bg-background/60 backdrop-blur-sm rounded-2xl p-8 border border-border/30 relative"
             >
-              <Quote className="w-8 h-8 text-accent mb-4" />
+              <motion.div
+                initial={{ opacity: 0, scale: 0.8 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: index * 0.2 + 0.3 }}
+              >
+                <Quote className="w-8 h-8 text-accent mb-4" />
+              </motion.div>
               <p className="text-foreground font-body leading-relaxed mb-6 text-lg">
                 {t.text}
               </p>
@@ -47,6 +54,8 @@ const TestimonialsSection = () => {
               </p>
             </motion.div>
           ))}
+          {/* Decorative divider between cards */}
+          <div className="hidden md:block absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-px h-3/4 bg-gradient-to-b from-transparent via-primary/20 to-transparent" />
         </div>
       </div>
     </section>
