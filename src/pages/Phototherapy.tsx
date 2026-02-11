@@ -2,6 +2,19 @@ import { motion } from "framer-motion";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import phototherapyHero from "@/assets/phototherapy-hero.jpg";
+import photo1 from "@/assets/phototherapy-1.jpg";
+import photo2 from "@/assets/phototherapy-2.jpg";
+import photo3 from "@/assets/phototherapy-3.jpg";
+import photo4 from "@/assets/phototherapy-4.jpg";
+import photo5 from "@/assets/phototherapy-5.jpg";
+
+const galleryImages = [
+  { src: photo1, alt: "עבודת פוטותרפיה 1" },
+  { src: photo2, alt: "עבודת פוטותרפיה 2" },
+  { src: photo3, alt: "עבודת פוטותרפיה 3" },
+  { src: photo4, alt: "עבודת פוטותרפיה 4" },
+  { src: photo5, alt: "עבודת פוטותרפיה 5" },
+];
 
 const Phototherapy = () => {
   return (
@@ -104,6 +117,30 @@ const Phototherapy = () => {
                   >
                     <h3 className="text-xl font-heading font-bold text-foreground mb-2">{item.title}</h3>
                     <p className="text-muted-foreground font-body leading-relaxed">{item.desc}</p>
+                  </motion.div>
+                ))}
+              </div>
+            </div>
+
+            {/* Gallery */}
+            <div>
+              <h2 className="text-3xl font-heading font-bold text-foreground mb-6 text-center">מהסדנאות שלנו</h2>
+              <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
+                {galleryImages.map((img, i) => (
+                  <motion.div
+                    key={i}
+                    initial={{ opacity: 0, scale: 0.95 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.5, delay: i * 0.1 }}
+                    className="overflow-hidden rounded-xl aspect-[3/2]"
+                  >
+                    <img
+                      src={img.src}
+                      alt={img.alt}
+                      className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+                      loading="lazy"
+                    />
                   </motion.div>
                 ))}
               </div>
