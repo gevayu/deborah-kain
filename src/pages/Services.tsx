@@ -5,17 +5,22 @@ import Footer from "@/components/Footer";
 import servicesHero from "@/assets/services-hero.jpg";
 import soulCollageHero from "@/assets/soul-collage-hero.jpg";
 import phototherapyHero from "@/assets/phototherapy-hero.jpg";
+import workshopCombined from "@/assets/workshop-combined.jpg";
+import workshopAnnual from "@/assets/workshop-annual.jpg";
+import workshopSummer from "@/assets/workshop-summer.jpg";
 
 const services = [
   {
     title: "סדנאות והמפגשים",
     desc: "בואו לחוות סדרת סדנאות חווייתיות והמעצימות את הקול הפנימי. נעמיק יחד בתהליכים המשלבים עבודה עם דימויים, יצירה אינטואיטיבית ותשומת לב עמוקה לרגש. בסדנאות שלנו, כל משתתפת ומשתתף מקבלים מקום להיות, לחקור ולהעז — ללא שיפוט וללא צורך בכישרון אמנותי.",
     link: null,
+    image: workshopCombined,
   },
   {
     title: "ליווי אישי",
     desc: "לצד עבודה קבוצתית, ישנה אפשרות לתמיכה אישית, אחד על אחד, במפגשים המותאמים עבורך. יחד נזהה מה מבקש להתגלות ולבוא לידי ביטוי בעולמך, ונעבוד בגישה עדינה, קשובה, ומעודדת צמיחה פנימית. ליווי אישי רוחני נועד גם לתמיכה וליווי במצבי שבר — התבוננות, גילוי ושהות ביחד בשקט ובדיאלוג.",
     link: null,
+    image: workshopAnnual,
   },
   {
     title: "סדנאות סול קולאז'",
@@ -33,6 +38,7 @@ const services = [
     title: "סדנאות ייעודיות לארגונים ולמוסדות",
     desc: "אנו מגיעים גם אל צוותים וארגונים: מביאים את עולם ה-SoulCollage וסדנאות ההתפתחות למרחבים מקצועיים, כפתרון להפגת עומס, לבניית אמון, שיפור תקשורת צוותית, יצירה משותפת וגיבוש.",
     link: null,
+    image: workshopSummer,
   },
   {
     title: "קורסים והרצאות עומק",
