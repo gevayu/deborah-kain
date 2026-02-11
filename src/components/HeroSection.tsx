@@ -1,5 +1,51 @@
 import { motion } from "framer-motion";
+import { useMemo } from "react";
 import heroBg from "@/assets/hero-bg.jpg";
+
+const Particles = () => {
+  const particles = useMemo(
+    () =>
+      Array.from({ length: 30 }, (_, i) => ({
+        id: i,
+        x: Math.random() * 100,
+        y: Math.random() * 100,
+        size: Math.random() * 4 + 1.5,
+        duration: Math.random() * 12 + 10,
+        delay: Math.random() * 8,
+        opacity: Math.random() * 0.35 + 0.1,
+      })),
+    []
+  );
+
+  return (
+    <div className="absolute inset-0 z-[2] pointer-events-none overflow-hidden">
+      {particles.map((p) => (
+        <motion.div
+          key={p.id}
+          className="absolute rounded-full bg-primary-foreground"
+          style={{
+            width: p.size,
+            height: p.size,
+            left: `${p.x}%`,
+            top: `${p.y}%`,
+            opacity: 0,
+          }}
+          animate={{
+            y: [0, -60, -120],
+            x: [0, Math.random() * 30 - 15],
+            opacity: [0, p.opacity, 0],
+          }}
+          transition={{
+            duration: p.duration,
+            delay: p.delay,
+            repeat: Infinity,
+            ease: "easeInOut",
+          }}
+        />
+      ))}
+    </div>
+  );
+};
 
 const HeroSection = () => {
   return (
@@ -14,6 +60,9 @@ const HeroSection = () => {
         />
         <div className="absolute inset-0 bg-gradient-to-b from-background/60 via-background/40 to-background/90" />
       </div>
+
+      {/* Floating particles */}
+      <Particles />
 
       {/* Content */}
       <div className="relative z-10 container mx-auto px-4 text-center pt-20">
