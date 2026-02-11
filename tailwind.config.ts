@@ -14,8 +14,8 @@ export default {
     },
     extend: {
       fontFamily: {
-        heading: ['"Frank Ruhl Libre"', 'serif'],
-        body: ['"Heebo"', 'sans-serif'],
+        heading: ['"Noto Sans Hebrew"', 'sans-serif'],
+        body: ['"Noto Sans Hebrew"', 'sans-serif'],
       },
       colors: {
         border: "hsl(var(--border))",
