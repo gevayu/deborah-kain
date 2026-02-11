@@ -46,7 +46,7 @@ const ValuesSection = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: index * 0.2 }}
-              className="bg-background/70 backdrop-blur-sm rounded-2xl overflow-hidden shadow-sm border border-border/30 hover:shadow-md transition-shadow"
+              className="bg-background/70 backdrop-blur-sm rounded-2xl overflow-hidden shadow-sm border border-border/30 hover:shadow-md hover:-translate-y-1 transition-all duration-300"
             >
               <div className="aspect-square overflow-hidden">
                 <img

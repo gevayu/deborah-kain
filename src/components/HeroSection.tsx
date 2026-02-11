@@ -1,5 +1,5 @@
-import { motion } from "framer-motion";
-import { useMemo } from "react";
+import { motion, useScroll, useTransform } from "framer-motion";
+import { useMemo, useRef } from "react";
 import heroBg from "@/assets/hero-bg.jpg";
 
 const Particles = () => {
@@ -52,10 +52,17 @@ const Particles = () => {
 };
 
 const HeroSection = () => {
+  const sectionRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start start", "end start"],
+  });
+  const bgY = useTransform(scrollYProgress, [0, 1], ["0%", "30%"]);
+
   return (
-    <section id="hero" className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Background Image */}
-      <div className="absolute inset-0">
+    <section ref={sectionRef} id="hero" className="relative min-h-screen flex items-center justify-center overflow-hidden">
+      {/* Background Image with parallax */}
+      <motion.div className="absolute inset-0" style={{ y: bgY }}>
         <img
           src={heroBg}
           alt=""
@@ -63,7 +70,7 @@ const HeroSection = () => {
           loading="eager"
         />
         <div className="absolute inset-0 bg-gradient-to-b from-background/60 via-background/40 to-background/90" />
-      </div>
+      </motion.div>
 
       {/* Floating particles */}
       <Particles />
