@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import aboutHero from "@/assets/about-hero.jpg";
+import dvoraPortrait from "@/assets/dvora-portrait.jpg";
 
 const About = () => {
   return (
@@ -35,14 +36,27 @@ const About = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
           >
-            <h2 className="text-3xl md:text-4xl font-heading font-bold text-foreground mb-8">
-              הסיפור האישי
-            </h2>
+            <div className="flex flex-col md:flex-row gap-8 items-start mb-8">
+              <motion.div
+                initial={{ opacity: 0, scale: 0.95 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6 }}
+                className="w-48 h-48 md:w-56 md:h-56 rounded-2xl overflow-hidden flex-shrink-0 mx-auto md:mx-0"
+              >
+                <img src={dvoraPortrait} alt="דבורה קיין-רייניש" className="w-full h-full object-cover" />
+              </motion.div>
+              <div>
+                <h2 className="text-3xl md:text-4xl font-heading font-bold text-foreground mb-4">
+                  הסיפור האישי
+                </h2>
+                <p className="text-lg md:text-xl text-muted-foreground font-body leading-relaxed">
+                  שמי נקרא על שם סבתי — מתוך חיבור עמוק. סבתי הייתה אישה מלאה חום, תבונה ושלווה.
+                  היא ידעה להקשיב בלי למהר, להחזיק מרחב בלי לשפוט, ולראות את האור באדם.
+                </p>
+              </div>
+            </div>
             <div className="space-y-6 text-lg md:text-xl text-muted-foreground font-body leading-relaxed">
-              <p>
-                שמי נקרא על שם סבתי — מתוך חיבור עמוק. סבתי הייתה אישה מלאה חום, תבונה ושלווה.
-                היא ידעה להקשיב בלי למהר, להחזיק מרחב בלי לשפוט, ולראות את האור באדם.
-              </p>
               <p>
                 לפני שנים רבות, מצאתי את עצמי במקום שבו המילים נגמרו. הייתה תחושה, צורך, קריאה פנימית — 
                 אבל לא היו לי כלים לתרגם אותה. התחלתי לחפש דרכים אחרות להקשיב לעצמי: דרך דימויים, צבעים, סמלים.
