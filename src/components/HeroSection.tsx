@@ -5,15 +5,15 @@ import heroBg from "@/assets/hero-bg.jpg";
 const Particles = () => {
   const particles = useMemo(
     () =>
-      Array.from({ length: 50 }, (_, i) => ({
+      Array.from({ length: 70 }, (_, i) => ({
         id: i,
         x: Math.random() * 100,
-        y: 60 + Math.random() * 40,
-        size: Math.random() * 6 + 3,
+        y: 50 + Math.random() * 50,
+        size: Math.random() * 10 + 5,
         duration: Math.random() * 10 + 8,
         delay: Math.random() * 6,
-        opacity: Math.random() * 0.5 + 0.3,
-        drift: Math.random() * 40 - 20,
+        opacity: Math.random() * 0.6 + 0.4,
+        drift: Math.random() * 50 - 25,
       })),
     []
   );
@@ -30,8 +30,8 @@ const Particles = () => {
             left: `${p.x}%`,
             top: `${p.y}%`,
             opacity: 0,
-            background: `radial-gradient(circle, hsl(var(--primary) / 0.9), hsl(var(--primary) / 0.2))`,
-            boxShadow: `0 0 ${p.size * 2}px hsl(var(--primary) / 0.4)`,
+            background: `radial-gradient(circle, hsl(var(--primary) / 1), hsl(var(--primary) / 0.4))`,
+            boxShadow: `0 0 ${p.size * 3}px ${p.size}px hsl(var(--primary) / 0.5)`,
           }}
           animate={{
             y: [0, -100, -220],
