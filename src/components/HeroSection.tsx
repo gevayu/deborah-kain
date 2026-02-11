@@ -33,7 +33,7 @@ const HeroSection = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.5, duration: 0.8 }}
-            className="text-lg md:text-xl text-muted-foreground font-body leading-relaxed mb-10 max-w-2xl mx-auto"
+            className="text-xl md:text-2xl text-muted-foreground font-body leading-relaxed mb-10 max-w-2xl mx-auto"
           >
             כאן, בין המילים והדימויים, בין הדמיון והמציאות — 
             נפתח יחד דלת לעולם הפנימי שלך

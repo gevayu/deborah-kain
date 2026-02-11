@@ -39,7 +39,7 @@ const TestimonialsSection = () => {
               className="bg-background/60 backdrop-blur-sm rounded-2xl p-8 border border-border/30 relative"
             >
               <Quote className="w-8 h-8 text-accent mb-4" />
-              <p className="text-foreground font-body leading-relaxed mb-6 text-base">
+              <p className="text-foreground font-body leading-relaxed mb-6 text-lg">
                 {t.text}
               </p>
               <p className="text-muted-foreground font-body text-sm">
