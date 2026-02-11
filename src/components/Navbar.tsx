@@ -1,17 +1,27 @@
 import { useState } from "react";
-import { Menu, X } from "lucide-react";
+import { Menu, X, ChevronDown } from "lucide-react";
 import logo from "@/assets/logo.png";
 
 const navItems = [
   { label: "בית", href: "#hero" },
   { label: "אודות", href: "#about" },
-  { label: "שירותים", href: "#services" },
-  { label: "המלצות", href: "#testimonials" },
+  {
+    label: "השירותים שלנו",
+    href: "#services",
+    children: [
+      { label: "ליווי אישי", href: "#individual" },
+      { label: "סדנאות קבוצתיות", href: "#workshops" },
+    ],
+  },
+  { label: "המסע האישי", href: "#journey" },
+  { label: "שאלות נפוצות", href: "#faq" },
+  { label: "בלוג ומשאבים", href: "#blog" },
   { label: "צרו קשר", href: "#contact" },
 ];
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [openDropdown, setOpenDropdown] = useState<string | null>(null);
 
   return (
     <nav className="fixed top-0 right-0 left-0 z-50 bg-background/80 backdrop-blur-md border-b border-border/50">
@@ -21,15 +31,35 @@ const Navbar = () => {
         </a>
 
         {/* Desktop Nav */}
-        <ul className="hidden md:flex items-center gap-8">
+        <ul className="hidden lg:flex items-center gap-6">
           {navItems.map((item) => (
-            <li key={item.href}>
+            <li
+              key={item.href}
+              className="relative"
+              onMouseEnter={() => item.children && setOpenDropdown(item.label)}
+              onMouseLeave={() => setOpenDropdown(null)}
+            >
               <a
                 href={item.href}
-                className="text-foreground/80 hover:text-primary transition-colors font-body text-sm font-medium"
+                className="text-foreground/80 hover:text-primary transition-colors font-body text-sm font-medium flex items-center gap-1"
               >
                 {item.label}
+                {item.children && <ChevronDown className="w-3.5 h-3.5" />}
               </a>
+              {item.children && openDropdown === item.label && (
+                <ul className="absolute top-full right-0 mt-1 bg-background border border-border rounded-lg shadow-lg py-2 min-w-[160px]">
+                  {item.children.map((child) => (
+                    <li key={child.href}>
+                      <a
+                        href={child.href}
+                        className="block px-4 py-2 text-sm text-foreground/80 hover:text-primary hover:bg-muted transition-colors font-body"
+                      >
+                        {child.label}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              )}
             </li>
           ))}
         </ul>
@@ -37,7 +67,7 @@ const Navbar = () => {
         {/* Mobile Toggle */}
         <button
           onClick={() => setIsOpen(!isOpen)}
-          className="md:hidden text-foreground"
+          className="lg:hidden text-foreground"
           aria-label="תפריט"
         >
           {isOpen ? <X size={24} /> : <Menu size={24} />}
@@ -46,17 +76,35 @@ const Navbar = () => {
 
       {/* Mobile Nav */}
       {isOpen && (
-        <div className="md:hidden bg-background border-t border-border">
-          <ul className="flex flex-col items-center gap-4 py-6">
+        <div className="lg:hidden bg-background border-t border-border">
+          <ul className="flex flex-col items-center gap-2 py-6">
             {navItems.map((item) => (
-              <li key={item.href}>
+              <li key={item.href} className="w-full text-center">
                 <a
                   href={item.href}
-                  onClick={() => setIsOpen(false)}
-                  className="text-foreground/80 hover:text-primary transition-colors font-body text-base"
+                  onClick={() => {
+                    if (!item.children) setIsOpen(false);
+                    else setOpenDropdown(openDropdown === item.label ? null : item.label);
+                  }}
+                  className="block py-2 text-foreground/80 hover:text-primary transition-colors font-body text-base"
                 >
                   {item.label}
                 </a>
+                {item.children && openDropdown === item.label && (
+                  <ul className="bg-muted/50 py-1">
+                    {item.children.map((child) => (
+                      <li key={child.href}>
+                        <a
+                          href={child.href}
+                          onClick={() => setIsOpen(false)}
+                          className="block py-2 text-sm text-foreground/70 hover:text-primary transition-colors font-body"
+                        >
+                          {child.label}
+                        </a>
+                      </li>
+                    ))}
+                  </ul>
+                )}
               </li>
             ))}
           </ul>
