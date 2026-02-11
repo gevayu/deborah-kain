@@ -88,12 +88,13 @@ const Blog = () => {
                     className="block bg-card/60 backdrop-blur-sm rounded-2xl border border-border/50 overflow-hidden hover:shadow-lg transition-shadow group"
                   >
                     {post.image_url && (
-                      <div className="aspect-video overflow-hidden">
+                      <div className="aspect-video overflow-hidden relative">
                         <img
                           src={post.image_url}
                           alt={post.title}
                           className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                         />
+                        <div className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-black/40 to-transparent" />
                       </div>
                     )}
                     <div className="p-6">
