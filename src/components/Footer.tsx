@@ -4,7 +4,7 @@ const Footer = () => {
   return (
     <footer className="py-12 bg-background border-t border-border/50">
       <div className="container mx-auto px-4 text-center">
-        <img src={logo} alt="SoulRoad" className="h-16 mx-auto mb-6" />
+        <img src={logo} alt="SoulRoad" className="h-24 mx-auto mb-6" />
         <p className="text-muted-foreground font-body text-sm">
           דבורה קיין-רייניש — פסיכולוגית ופוטותרפיסטית
         </p>
