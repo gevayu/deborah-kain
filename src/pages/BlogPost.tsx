@@ -134,7 +134,7 @@ const BlogPost = () => {
               </div>
             )}
 
-            <div className="prose prose-lg max-w-none font-body text-muted-foreground leading-relaxed whitespace-pre-line">
+            <div className="prose prose-xl max-w-none font-body text-muted-foreground leading-relaxed whitespace-pre-line text-lg md:text-xl">
               {post.content}
             </div>
 
