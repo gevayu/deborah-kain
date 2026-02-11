@@ -166,6 +166,32 @@ const Phototherapy = () => {
               </div>
             </div>
 
+            {/* Testimonials */}
+            <div>
+              <h2 className="text-3xl font-heading font-bold text-foreground mb-6 text-center">משתתפים ממליצים</h2>
+              <div className="grid md:grid-cols-2 gap-6">
+                {[
+                  { name: "לילך א׳", text: "תקופה מרתקת של למידה והיכרות עם עצמנו והמצלמה... לימדת אותנו להתייחס לעוצמה שיש במצלמה וגם להביע דרכה רכות חוזק סקרנות ורגש" },
+                  { name: "דנה ש׳", text: "אהבתי את הדרך שגם שילבת היכרות עם כל מני צלמים. למדנו להכיר סגנונות שונים של צילום וגם לראות איך כל צלם יש לו שפה שנובעת מההסתכלות שלו על החיים והחוויות שלו" },
+                  { name: "עדה ג׳", text: "לדבורה יש המון סבלנות ונועם. כל שאלה מקבלת תשובה והיא לא מתייאשת. למדנו גם המון על הטלפון על הדרך. הנכדים שלי מתלהבים מהצילומים שלי גם" },
+                  { name: "מיכל ש׳", text: "תודה דבורה על הסבלנות. מקווה שנמשיך כי את מדהימה. פתאום ראיתי דברים שלא שמתי לב אליהם. העולם עשיר יותר בזכותך." },
+                  { name: "שרה ג׳", text: "למדת אותנו להבחין בהשפעות האור והצל, כיצד האור משפיע על הצילום ומה התפקיד של הצל. למדנו זוויות צילום, עריכה ופוטומונטאז׳ ועוד המון דרכים לשפר ממש את הצילום וגם להביע את עצמנו" },
+                ].map((item, i) => (
+                  <motion.div
+                    key={i}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.6, delay: i * 0.1 }}
+                    className="bg-card/60 backdrop-blur-sm rounded-xl p-6 border border-border/50"
+                  >
+                    <p className="text-muted-foreground font-body leading-relaxed mb-3 italic">"{item.text}"</p>
+                    <p className="text-foreground font-heading font-bold">— {item.name}</p>
+                  </motion.div>
+                ))}
+              </div>
+            </div>
+
             {/* CTA */}
             <div className="bg-section-alt rounded-2xl p-8 text-center">
               <p className="text-xl font-heading font-bold text-foreground mb-2">
