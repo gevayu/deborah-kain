@@ -6,7 +6,11 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { useToast } from "@/hooks/use-toast";
-import { Pencil, Trash2, Plus, LogOut, Upload, X } from "lucide-react";
+import { Pencil, Trash2, Plus, LogOut, Upload, X, ArrowUp, ArrowDown, CalendarIcon } from "lucide-react";
+import { format } from "date-fns";
+import { cn } from "@/lib/utils";
+import { Calendar } from "@/components/ui/calendar";
+import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import {
   Dialog,
   DialogContent,
@@ -29,7 +33,7 @@ const AdminDashboard = () => {
   const [loading, setLoading] = useState(true);
   const [dialogOpen, setDialogOpen] = useState(false);
   const [editingPost, setEditingPost] = useState<BlogPost | null>(null);
-  const [form, setForm] = useState({ title: "", slug: "", excerpt: "", content: "", image_url: "" });
+  const [form, setForm] = useState({ title: "", slug: "", excerpt: "", content: "", image_url: "", published_at: "" });
   const [saving, setSaving] = useState(false);
   const [uploading, setUploading] = useState(false);
   const [imagePreview, setImagePreview] = useState<string | null>(null);
@@ -63,7 +67,7 @@ const AdminDashboard = () => {
 
   const openNew = () => {
     setEditingPost(null);
-    setForm({ title: "", slug: "", excerpt: "", content: "", image_url: "" });
+    setForm({ title: "", slug: "", excerpt: "", content: "", image_url: "", published_at: new Date().toISOString() });
     setImagePreview(null);
     setDialogOpen(true);
   };
@@ -76,6 +80,7 @@ const AdminDashboard = () => {
       excerpt: post.excerpt || "",
       content: post.content,
       image_url: post.image_url || "",
+      published_at: post.published_at,
     });
     setImagePreview(post.image_url || null);
     setDialogOpen(true);
@@ -98,6 +103,7 @@ const AdminDashboard = () => {
       excerpt: form.excerpt || null,
       content: form.content,
       image_url: form.image_url || null,
+      published_at: form.published_at,
     };
 
     let error;
@@ -124,6 +130,31 @@ const AdminDashboard = () => {
       toast({ title: "שגיאה", description: error.message, variant: "destructive" });
     } else {
       toast({ title: "הפוסט נמחק" });
+      fetchPosts();
+    }
+  };
+
+  const movePost = async (index: number, direction: "up" | "down") => {
+    const targetIndex = direction === "up" ? index - 1 : index + 1;
+    if (targetIndex < 0 || targetIndex >= posts.length) return;
+
+    // Swap published_at dates to swap order
+    const currentPost = posts[index];
+    const targetPost = posts[targetIndex];
+
+    const { error: err1 } = await supabase
+      .from("blog_posts")
+      .update({ published_at: targetPost.published_at })
+      .eq("id", currentPost.id);
+
+    const { error: err2 } = await supabase
+      .from("blog_posts")
+      .update({ published_at: currentPost.published_at })
+      .eq("id", targetPost.id);
+
+    if (err1 || err2) {
+      toast({ title: "שגיאה בשינוי סדר", variant: "destructive" });
+    } else {
       fetchPosts();
     }
   };
@@ -159,13 +190,35 @@ const AdminDashboard = () => {
           </div>
         ) : (
           <div className="space-y-3">
-            {posts.map((post) => (
+            {posts.map((post, index) => (
               <div key={post.id} className="flex items-center justify-between p-4 bg-card rounded-lg border border-border">
-                <div className="flex-1 min-w-0">
-                  <h3 className="font-heading font-semibold text-foreground truncate">{post.title}</h3>
-                  <p className="text-sm text-muted-foreground mt-1">
-                    {new Date(post.published_at).toLocaleDateString("he-IL")}
-                  </p>
+                <div className="flex items-center gap-2">
+                  <div className="flex flex-col gap-1">
+                    <Button
+                      variant="ghost"
+                      size="icon"
+                      className="h-6 w-6"
+                      disabled={index === 0}
+                      onClick={() => movePost(index, "up")}
+                    >
+                      <ArrowUp className="w-3 h-3" />
+                    </Button>
+                    <Button
+                      variant="ghost"
+                      size="icon"
+                      className="h-6 w-6"
+                      disabled={index === posts.length - 1}
+                      onClick={() => movePost(index, "down")}
+                    >
+                      <ArrowDown className="w-3 h-3" />
+                    </Button>
+                  </div>
+                  <div className="flex-1 min-w-0">
+                    <h3 className="font-heading font-semibold text-foreground truncate">{post.title}</h3>
+                    <p className="text-sm text-muted-foreground mt-1">
+                      {new Date(post.published_at).toLocaleDateString("he-IL")}
+                    </p>
+                  </div>
                 </div>
                 <div className="flex gap-2 mr-4">
                   <Button variant="ghost" size="icon" onClick={() => openEdit(post)}>
@@ -194,6 +247,36 @@ const AdminDashboard = () => {
             <div className="space-y-2">
               <Label>Slug (אוטומטי אם ריק)</Label>
               <Input value={form.slug} onChange={(e) => setForm({ ...form, slug: e.target.value })} dir="ltr" />
+            </div>
+            <div className="space-y-2">
+              <Label>תאריך פרסום</Label>
+              <Popover>
+                <PopoverTrigger asChild>
+                  <Button
+                    variant="outline"
+                    className={cn(
+                      "w-full justify-start text-right font-normal",
+                      !form.published_at && "text-muted-foreground"
+                    )}
+                  >
+                    <CalendarIcon className="ml-2 h-4 w-4" />
+                    {form.published_at
+                      ? format(new Date(form.published_at), "dd/MM/yyyy")
+                      : "בחר תאריך"}
+                  </Button>
+                </PopoverTrigger>
+                <PopoverContent className="w-auto p-0" align="start">
+                  <Calendar
+                    mode="single"
+                    selected={form.published_at ? new Date(form.published_at) : undefined}
+                    onSelect={(date) => {
+                      if (date) setForm({ ...form, published_at: date.toISOString() });
+                    }}
+                    initialFocus
+                    className={cn("p-3 pointer-events-auto")}
+                  />
+                </PopoverContent>
+              </Popover>
             </div>
             <div className="space-y-2">
               <Label>תקציר</Label>
