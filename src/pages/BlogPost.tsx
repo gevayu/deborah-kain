@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { ArrowRight, ArrowLeft } from "lucide-react";
+import { ArrowRight, ArrowLeft, Share2 } from "lucide-react";
+import { FaWhatsapp, FaFacebookF } from "react-icons/fa";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { supabase } from "@/integrations/supabase/client";
@@ -135,6 +136,32 @@ const BlogPost = () => {
 
             <div className="prose prose-lg max-w-none font-body text-muted-foreground leading-relaxed whitespace-pre-line">
               {post.content}
+            </div>
+
+            {/* Share buttons */}
+            <div className="mt-12 pt-8 border-t border-border/50 flex items-center gap-4">
+              <span className="text-sm text-muted-foreground/60 font-body flex items-center gap-2">
+                <Share2 className="w-4 h-4" />
+                שיתוף
+              </span>
+              <a
+                href={`https://wa.me/?text=${encodeURIComponent(post.title + ' ' + window.location.href)}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-[#25D366]/10 text-[#25D366] hover:bg-[#25D366]/20 transition-colors"
+                aria-label="שיתוף בוואטסאפ"
+              >
+                <FaWhatsapp className="w-5 h-5" />
+              </a>
+              <a
+                href={`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(window.location.href)}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-[#1877F2]/10 text-[#1877F2] hover:bg-[#1877F2]/20 transition-colors"
+                aria-label="שיתוף בפייסבוק"
+              >
+                <FaFacebookF className="w-5 h-5" />
+              </a>
             </div>
           </motion.div>
         </div>
