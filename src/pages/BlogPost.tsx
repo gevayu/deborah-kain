@@ -5,6 +5,7 @@ import { ArrowRight, ArrowLeft, Share2 } from "lucide-react";
 import { FaWhatsapp, FaFacebookF, FaInstagram, FaLinkedinIn } from "react-icons/fa";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import AuthorBanner from "@/components/AuthorBanner";
 import { supabase } from "@/integrations/supabase/client";
 
 interface Post {
@@ -181,6 +182,8 @@ const BlogPost = () => {
                 <FaLinkedinIn className="w-5 h-5" />
               </a>
             </div>
+
+            <AuthorBanner />
           </motion.div>
         </div>
       </article>
