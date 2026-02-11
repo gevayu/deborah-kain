@@ -127,7 +127,7 @@ const BlogPost = () => {
             </h1>
 
             {post.image_url && (
-              <div className="aspect-video rounded-2xl overflow-hidden mb-10 relative">
+              <div className="aspect-video rounded-2xl overflow-hidden mb-10 relative shadow-xl shadow-black/15">
                 <img src={post.image_url} alt={post.title} className="w-full h-full object-cover" />
                 <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-black/60 to-transparent" />
               </div>
@@ -144,15 +144,15 @@ const BlogPost = () => {
       {(prevPost || nextPost) && (
         <nav className="border-t border-border/50 bg-section-alt">
           <div className="container mx-auto px-4 max-w-5xl">
-            <div className="grid grid-cols-1 md:grid-cols-2">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-0 md:gap-0">
               {/* Previous (older) post - right side in RTL */}
               {prevPost ? (
                 <Link
                   to={`/blog/${prevPost.slug}`}
-                  className="group flex items-center gap-4 p-6 md:p-8 md:border-l border-b md:border-b-0 border-border/50 hover:bg-card/60 transition-colors"
+                  className="group flex items-center gap-4 p-5 md:p-6 md:border-l border-b md:border-b-0 border-border/50 hover:bg-card/60 transition-colors"
                 >
                   {prevPost.image_url && (
-                    <div className="w-20 h-20 md:w-24 md:h-24 rounded-xl overflow-hidden flex-shrink-0 relative">
+                    <div className="w-20 h-20 md:w-24 md:h-24 rounded-xl overflow-hidden flex-shrink-0 relative shadow-lg shadow-black/10">
                       <img src={prevPost.image_url} alt={prevPost.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
                       <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-black/50 to-transparent" />
                     </div>
@@ -175,10 +175,10 @@ const BlogPost = () => {
               {nextPost ? (
                 <Link
                   to={`/blog/${nextPost.slug}`}
-                  className="group flex items-center gap-4 p-6 md:p-8 hover:bg-card/60 transition-colors flex-row-reverse text-left"
+                  className="group flex items-center gap-4 p-5 md:p-6 hover:bg-card/60 transition-colors flex-row-reverse text-left"
                 >
                   {nextPost.image_url && (
-                    <div className="w-20 h-20 md:w-24 md:h-24 rounded-xl overflow-hidden flex-shrink-0 relative">
+                    <div className="w-20 h-20 md:w-24 md:h-24 rounded-xl overflow-hidden flex-shrink-0 relative shadow-lg shadow-black/10">
                       <img src={nextPost.image_url} alt={nextPost.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
                       <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-black/50 to-transparent" />
                     </div>
