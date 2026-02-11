@@ -1,13 +1,19 @@
+import OptimizedImage from "@/components/OptimizedImage";
 import dvoraAuthor from "@/assets/dvora-author.jpg";
+import dvoraAuthorWebp from "@/assets/dvora-author.jpg?format=webp&quality=80";
 
 const AuthorBanner = () => {
   return (
     <div className="bg-card/60 border border-border/30 rounded-2xl p-6 md:p-8 flex flex-col md:flex-row items-center gap-6 mt-12" dir="rtl">
       <div className="w-24 h-24 md:w-28 md:h-28 rounded-full overflow-hidden flex-shrink-0 border-2 border-primary/20">
-        <img
+        <OptimizedImage
           src={dvoraAuthor}
+          webpSrc={dvoraAuthorWebp}
           alt="דבורה קיין רייניש"
           className="w-full h-full object-cover"
+          width={112}
+          height={112}
+          sizes="(max-width: 768px) 96px, 112px"
         />
       </div>
       <div className="text-center md:text-right">

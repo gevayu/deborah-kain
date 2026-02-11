@@ -1,8 +1,11 @@
 import { motion } from "framer-motion";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import OptimizedImage from "@/components/OptimizedImage";
 import aboutHero from "@/assets/about-hero.jpg";
+import aboutHeroWebp from "@/assets/about-hero.jpg?format=webp&quality=80";
 import dvoraPortrait from "@/assets/dvora-portrait.jpg";
+import dvoraPortraitWebp from "@/assets/dvora-portrait.jpg?format=webp&quality=80";
 
 const About = () => {
   return (
@@ -12,7 +15,16 @@ const About = () => {
       {/* Hero */}
       <section className="relative pt-24 pb-16 md:pt-32 md:pb-24">
         <div className="absolute inset-0">
-          <img src={aboutHero} alt="" className="w-full h-full object-cover" />
+          <OptimizedImage
+            src={aboutHero}
+            webpSrc={aboutHeroWebp}
+            alt=""
+            className="w-full h-full object-cover"
+            loading="eager"
+            fetchPriority="high"
+            width={1920}
+            height={1080}
+          />
           <div className="absolute inset-0 bg-gradient-to-b from-background/70 via-background/50 to-background" />
         </div>
         <div className="relative container mx-auto px-4 text-center">
@@ -44,7 +56,15 @@ const About = () => {
                 transition={{ duration: 0.6 }}
                 className="w-48 h-48 md:w-56 md:h-56 rounded-2xl overflow-hidden flex-shrink-0 mx-auto md:mx-0"
               >
-                <img src={dvoraPortrait} alt="דבורה קיין-רייניש" className="w-full h-full object-cover" />
+                <OptimizedImage
+                  src={dvoraPortrait}
+                  webpSrc={dvoraPortraitWebp}
+                  alt="דבורה קיין-רייניש"
+                  className="w-full h-full object-cover"
+                  width={224}
+                  height={224}
+                  sizes="(max-width: 768px) 192px, 224px"
+                />
               </motion.div>
               <div>
                 <h2 className="text-3xl md:text-4xl font-heading font-bold text-foreground mb-4">

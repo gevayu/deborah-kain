@@ -1,6 +1,7 @@
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useMemo, useRef } from "react";
 import heroBg from "@/assets/hero-bg.jpg";
+import heroBgWebp from "@/assets/hero-bg.jpg?format=webp&quality=80";
 
 const Particles = () => {
   const particles = useMemo(
@@ -63,12 +64,19 @@ const HeroSection = () => {
     <section ref={sectionRef} id="hero" className="relative min-h-screen flex items-center justify-center overflow-hidden">
       {/* Background Image with parallax */}
       <motion.div className="absolute inset-0" style={{ y: bgY }}>
-        <img
-          src={heroBg}
-          alt=""
-          className="w-full h-full object-cover"
-          loading="eager"
-        />
+        <picture>
+          <source srcSet={heroBgWebp} type="image/webp" />
+          <img
+            src={heroBg}
+            alt=""
+            className="w-full h-full object-cover"
+            loading="eager"
+            decoding="sync"
+            width={1920}
+            height={1080}
+            {...{ fetchPriority: "high" } as any}
+          />
+        </picture>
         <div className="absolute inset-0 bg-gradient-to-b from-background/60 via-background/40 to-background/90" />
       </motion.div>
 

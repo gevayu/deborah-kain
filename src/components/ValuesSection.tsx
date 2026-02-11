@@ -1,23 +1,30 @@
 import { motion } from "framer-motion";
+import OptimizedImage from "@/components/OptimizedImage";
 import valueWisdom from "@/assets/value-wisdom.jpg";
 import valueCreativity from "@/assets/value-creativity.jpg";
 import valueCommunity from "@/assets/value-community.jpg";
+import valueWisdomWebp from "@/assets/value-wisdom.jpg?format=webp&quality=80";
+import valueCreativityWebp from "@/assets/value-creativity.jpg?format=webp&quality=80";
+import valueCommunityWebp from "@/assets/value-community.jpg?format=webp&quality=80";
 
 const values = [
   {
     image: valueWisdom,
+    webp: valueWisdomWebp,
     title: "חוכמה פנימית",
     description:
       "אנחנו מאמינים שהתשובות כבר בתוכך. התפקיד שלנו הוא לעזור לך לשמוע אותן. דרך תהליכים יצירתיים ומודעים, נפתח יחד מרחב בטוח שבו הקול הפנימי שלך יכול לעלות, להתבטא, להנחות.",
   },
   {
     image: valueCreativity,
+    webp: valueCreativityWebp,
     title: "יצירתיות כשפה",
     description:
       "כשהמילים לא מספיקות, הדימויים מדברים. כשהשכל מבולבל, האינטואיציה מובילה. אנחנו עובדים עם יצירה חזותית, סיפור, מטאפורה וסמל — כלים שמאפשרים לנו לגעת במקומות שהשפה הרגילה לא מגיעה אליהם.",
   },
   {
     image: valueCommunity,
+    webp: valueCommunityWebp,
     title: "קהילה ושייכות",
     description:
       "את.ה לא לבד בדרך. כאן יש מעגל של נשמות חוקרות, מרחב של קבלה ללא שיפוט. קהילה שמחזיקה ומאפשרת לכל אחד.ת לצמוח בקצב שלו.",
@@ -49,11 +56,14 @@ const ValuesSection = () => {
               className="bg-background/70 backdrop-blur-sm rounded-2xl overflow-hidden shadow-sm border border-border/30 hover:shadow-md hover:-translate-y-1 transition-all duration-300"
             >
               <div className="aspect-square overflow-hidden">
-                <img
+                <OptimizedImage
                   src={value.image}
+                  webpSrc={value.webp}
                   alt={value.title}
                   className="w-full h-full object-cover"
-                  loading="lazy"
+                  width={400}
+                  height={400}
+                  sizes="(max-width: 768px) 100vw, 33vw"
                 />
               </div>
               <div className="p-6 text-center">
