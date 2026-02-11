@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import { supabase } from "@/integrations/supabase/client";
 import { Button } from "@/components/ui/button";
@@ -6,7 +6,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { useToast } from "@/hooks/use-toast";
-import { Pencil, Trash2, Plus, LogOut } from "lucide-react";
+import { Pencil, Trash2, Plus, LogOut, Upload, X } from "lucide-react";
 import {
   Dialog,
   DialogContent,
@@ -31,6 +31,9 @@ const AdminDashboard = () => {
   const [editingPost, setEditingPost] = useState<BlogPost | null>(null);
   const [form, setForm] = useState({ title: "", slug: "", excerpt: "", content: "", image_url: "" });
   const [saving, setSaving] = useState(false);
+  const [uploading, setUploading] = useState(false);
+  const [imagePreview, setImagePreview] = useState<string | null>(null);
+  const fileInputRef = useRef<HTMLInputElement>(null);
   const navigate = useNavigate();
   const { toast } = useToast();
 
@@ -61,6 +64,7 @@ const AdminDashboard = () => {
   const openNew = () => {
     setEditingPost(null);
     setForm({ title: "", slug: "", excerpt: "", content: "", image_url: "" });
+    setImagePreview(null);
     setDialogOpen(true);
   };
 
@@ -73,6 +77,7 @@ const AdminDashboard = () => {
       content: post.content,
       image_url: post.image_url || "",
     });
+    setImagePreview(post.image_url || null);
     setDialogOpen(true);
   };
 
@@ -195,8 +200,59 @@ const AdminDashboard = () => {
               <Textarea value={form.excerpt} onChange={(e) => setForm({ ...form, excerpt: e.target.value })} rows={2} />
             </div>
             <div className="space-y-2">
-              <Label>כתובת תמונה</Label>
-              <Input value={form.image_url} onChange={(e) => setForm({ ...form, image_url: e.target.value })} dir="ltr" />
+              <Label>תמונה</Label>
+              <input
+                ref={fileInputRef}
+                type="file"
+                accept="image/*"
+                className="hidden"
+                onChange={async (e) => {
+                  const file = e.target.files?.[0];
+                  if (!file) return;
+                  setUploading(true);
+                  const ext = file.name.split(".").pop() || "jpg";
+                  const fileName = `${Date.now()}_${crypto.randomUUID()}.${ext}`;
+                  const { error: uploadError } = await supabase.storage
+                    .from("blog-images")
+                    .upload(fileName, file, { contentType: file.type, upsert: true });
+                  if (uploadError) {
+                    toast({ title: "שגיאה בהעלאה", description: uploadError.message, variant: "destructive" });
+                  } else {
+                    const { data } = supabase.storage.from("blog-images").getPublicUrl(fileName);
+                    setForm({ ...form, image_url: data.publicUrl });
+                    setImagePreview(data.publicUrl);
+                    toast({ title: "התמונה הועלתה בהצלחה" });
+                  }
+                  setUploading(false);
+                }}
+              />
+              {imagePreview ? (
+                <div className="relative w-full aspect-video rounded-lg overflow-hidden border border-border">
+                  <img src={imagePreview} alt="תצוגה מקדימה" className="w-full h-full object-cover" />
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setImagePreview(null);
+                      setForm({ ...form, image_url: "" });
+                      if (fileInputRef.current) fileInputRef.current.value = "";
+                    }}
+                    className="absolute top-2 left-2 bg-background/80 rounded-full p-1 hover:bg-background"
+                  >
+                    <X className="w-4 h-4" />
+                  </button>
+                </div>
+              ) : (
+                <Button
+                  type="button"
+                  variant="outline"
+                  className="w-full"
+                  disabled={uploading}
+                  onClick={() => fileInputRef.current?.click()}
+                >
+                  <Upload className="w-4 h-4 ml-2" />
+                  {uploading ? "מעלה..." : "העלה תמונה"}
+                </Button>
+              )}
             </div>
             <div className="space-y-2">
               <Label>תוכן</Label>
