@@ -176,7 +176,7 @@ const BlogPost = () => {
               {prevPost ? (
                 <Link
                   to={`/blog/${prevPost.slug}`}
-                  className="group flex items-center gap-4 p-5 md:p-6 md:border-l border-b md:border-b-0 border-border/50 hover:bg-card/60 transition-colors"
+                  className="group flex items-center gap-3 p-4 md:p-5 md:border-l border-b md:border-b-0 border-border/50 hover:bg-card/60 transition-colors"
                 >
                   {prevPost.image_url && (
                     <div className="w-20 h-20 md:w-24 md:h-24 rounded-xl overflow-hidden flex-shrink-0 relative shadow-lg shadow-black/10">
@@ -202,7 +202,7 @@ const BlogPost = () => {
               {nextPost ? (
                 <Link
                   to={`/blog/${nextPost.slug}`}
-                  className="group flex items-center gap-4 p-5 md:p-6 hover:bg-card/60 transition-colors flex-row-reverse text-left"
+                  className="group flex items-center gap-3 p-4 md:p-5 hover:bg-card/60 transition-colors flex-row-reverse text-left"
                 >
                   {nextPost.image_url && (
                     <div className="w-20 h-20 md:w-24 md:h-24 rounded-xl overflow-hidden flex-shrink-0 relative shadow-lg shadow-black/10">
