@@ -5,14 +5,15 @@ import heroBg from "@/assets/hero-bg.jpg";
 const Particles = () => {
   const particles = useMemo(
     () =>
-      Array.from({ length: 30 }, (_, i) => ({
+      Array.from({ length: 50 }, (_, i) => ({
         id: i,
         x: Math.random() * 100,
-        y: Math.random() * 100,
-        size: Math.random() * 4 + 1.5,
-        duration: Math.random() * 12 + 10,
-        delay: Math.random() * 8,
-        opacity: Math.random() * 0.35 + 0.1,
+        y: 60 + Math.random() * 40,
+        size: Math.random() * 6 + 3,
+        duration: Math.random() * 10 + 8,
+        delay: Math.random() * 6,
+        opacity: Math.random() * 0.5 + 0.3,
+        drift: Math.random() * 40 - 20,
       })),
     []
   );
@@ -22,18 +23,21 @@ const Particles = () => {
       {particles.map((p) => (
         <motion.div
           key={p.id}
-          className="absolute rounded-full bg-primary-foreground"
+          className="absolute rounded-full"
           style={{
             width: p.size,
             height: p.size,
             left: `${p.x}%`,
             top: `${p.y}%`,
             opacity: 0,
+            background: `radial-gradient(circle, hsl(var(--primary) / 0.9), hsl(var(--primary) / 0.2))`,
+            boxShadow: `0 0 ${p.size * 2}px hsl(var(--primary) / 0.4)`,
           }}
           animate={{
-            y: [0, -60, -120],
-            x: [0, Math.random() * 30 - 15],
-            opacity: [0, p.opacity, 0],
+            y: [0, -100, -220],
+            x: [0, p.drift, p.drift * 0.5],
+            opacity: [0, p.opacity, p.opacity * 0.7, 0],
+            scale: [0.5, 1.3, 0.6],
           }}
           transition={{
             duration: p.duration,
