@@ -46,13 +46,13 @@ const HeroSection = () => {
             className="flex flex-col sm:flex-row gap-4 justify-center"
           >
             <a
-              href="#services"
+              href="/services"
               className="inline-block bg-primary text-primary-foreground px-8 py-4 rounded-lg font-body font-medium text-base hover:opacity-90 transition-opacity"
             >
               ליווי אישי
             </a>
             <a
-              href="#services"
+              href="/services"
               className="inline-block border-2 border-primary text-primary px-8 py-4 rounded-lg font-body font-medium text-base hover:bg-primary/10 transition-colors"
             >
               סדנאות קבוצתיות

@@ -21,13 +21,13 @@ const CtaSection = () => {
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a
-              href="#"
+              href="/services"
               className="inline-block bg-primary text-primary-foreground px-8 py-4 rounded-lg font-body font-medium text-base hover:opacity-90 transition-opacity"
             >
               מה אפשר לעשות ביחד?
             </a>
             <a
-              href="#"
+              href="/contact"
               className="inline-block border-2 border-primary text-primary px-8 py-4 rounded-lg font-body font-medium text-base hover:bg-primary/10 transition-colors"
             >
               מדברים איתנו
