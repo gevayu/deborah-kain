@@ -1,4 +1,6 @@
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
+import { useState, useCallback, useEffect } from "react";
+import { X, ChevronLeft, ChevronRight } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import phototherapyHero from "@/assets/phototherapy-hero.jpg";
@@ -17,6 +19,23 @@ const galleryImages = [
 ];
 
 const Phototherapy = () => {
+  const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
+
+  const closeLightbox = useCallback(() => setLightboxIndex(null), []);
+  const goNext = useCallback(() => setLightboxIndex((i) => (i !== null ? (i + 1) % galleryImages.length : null)), []);
+  const goPrev = useCallback(() => setLightboxIndex((i) => (i !== null ? (i - 1 + galleryImages.length) % galleryImages.length : null)), []);
+
+  useEffect(() => {
+    if (lightboxIndex === null) return;
+    const handler = (e: KeyboardEvent) => {
+      if (e.key === "Escape") closeLightbox();
+      if (e.key === "ArrowLeft") goNext();
+      if (e.key === "ArrowRight") goPrev();
+    };
+    window.addEventListener("keydown", handler);
+    return () => window.removeEventListener("keydown", handler);
+  }, [lightboxIndex, closeLightbox, goNext, goPrev]);
+
   return (
     <div className="min-h-screen">
       <Navbar />
@@ -133,7 +152,8 @@ const Phototherapy = () => {
                     whileInView={{ opacity: 1, scale: 1 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.5, delay: i * 0.1 }}
-                    className="overflow-hidden rounded-xl aspect-[3/2]"
+                    className="overflow-hidden rounded-xl aspect-[3/2] cursor-pointer"
+                    onClick={() => setLightboxIndex(i)}
                   >
                     <img
                       src={img.src}
@@ -164,6 +184,55 @@ const Phototherapy = () => {
           </motion.div>
         </div>
       </section>
+
+      {/* Lightbox */}
+      <AnimatePresence>
+        {lightboxIndex !== null && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-50 bg-black/90 flex items-center justify-center"
+            onClick={closeLightbox}
+          >
+            <button
+              onClick={closeLightbox}
+              className="absolute top-4 left-4 text-white/80 hover:text-white p-2 z-10"
+              aria-label="סגור"
+            >
+              <X className="w-8 h-8" />
+            </button>
+
+            <button
+              onClick={(e) => { e.stopPropagation(); goPrev(); }}
+              className="absolute right-4 top-1/2 -translate-y-1/2 text-white/80 hover:text-white p-2 z-10"
+              aria-label="הקודם"
+            >
+              <ChevronRight className="w-10 h-10" />
+            </button>
+
+            <button
+              onClick={(e) => { e.stopPropagation(); goNext(); }}
+              className="absolute left-4 top-1/2 -translate-y-1/2 text-white/80 hover:text-white p-2 z-10"
+              aria-label="הבא"
+            >
+              <ChevronLeft className="w-10 h-10" />
+            </button>
+
+            <motion.img
+              key={lightboxIndex}
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.9 }}
+              transition={{ duration: 0.3 }}
+              src={galleryImages[lightboxIndex].src}
+              alt={galleryImages[lightboxIndex].alt}
+              className="max-h-[85vh] max-w-[90vw] object-contain rounded-lg"
+              onClick={(e) => e.stopPropagation()}
+            />
+          </motion.div>
+        )}
+      </AnimatePresence>
 
       <Footer />
     </div>
