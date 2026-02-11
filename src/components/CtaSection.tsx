@@ -14,7 +14,7 @@ const CtaSection = () => {
           <h2 className="text-3xl md:text-4xl font-heading font-bold text-foreground mb-6">
             מוכנ.ה להתחיל? 🌸
           </h2>
-          <p className="text-lg text-muted-foreground font-body leading-relaxed mb-10">
+          <p className="text-xl text-muted-foreground font-body leading-relaxed mb-10">
             בין אם זו פעם ראשונה שלך, או שאת.ה כבר מכיר.ה את הדרך — 
             כאן יש מקום בשבילך.
           </p>

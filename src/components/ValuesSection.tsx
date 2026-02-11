@@ -52,7 +52,7 @@ const ValuesSection = () => {
               <h3 className="text-xl font-heading font-bold text-foreground mb-4">
                 {value.title}
               </h3>
-              <p className="text-muted-foreground font-body leading-relaxed text-sm">
+              <p className="text-muted-foreground font-body leading-relaxed text-base">
                 {value.description}
               </p>
             </motion.div>
@@ -64,7 +64,7 @@ const ValuesSection = () => {
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.6 }}
-          className="text-center text-muted-foreground font-body mt-12 max-w-2xl mx-auto"
+          className="text-center text-muted-foreground font-body mt-12 max-w-2xl mx-auto text-lg"
         >
           זה מסע לא של תיקון, אלא של גילוי. לא של משפט, אלא של קבלה. 
           לא של מאמץ, אלא של הקשבה.
