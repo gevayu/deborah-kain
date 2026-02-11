@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, ArrowLeft } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { supabase } from "@/integrations/supabase/client";
@@ -12,11 +12,20 @@ interface Post {
   content: string;
   image_url: string | null;
   published_at: string;
+  slug: string;
+}
+
+interface NavPost {
+  title: string;
+  slug: string;
+  image_url: string | null;
 }
 
 const BlogPost = () => {
   const { slug } = useParams<{ slug: string }>();
   const [post, setPost] = useState<Post | null>(null);
+  const [prevPost, setPrevPost] = useState<NavPost | null>(null);
+  const [nextPost, setNextPost] = useState<NavPost | null>(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -24,12 +33,33 @@ const BlogPost = () => {
       if (!slug) return;
       const { data, error } = await supabase
         .from("blog_posts")
-        .select("id, title, content, image_url, published_at")
+        .select("id, title, content, image_url, published_at, slug")
         .eq("slug", slug)
         .maybeSingle();
 
       if (!error && data) {
         setPost(data);
+
+        // Fetch prev (older) and next (newer) posts
+        const [prevRes, nextRes] = await Promise.all([
+          supabase
+            .from("blog_posts")
+            .select("title, slug, image_url")
+            .lt("published_at", data.published_at)
+            .order("published_at", { ascending: false })
+            .limit(1)
+            .maybeSingle(),
+          supabase
+            .from("blog_posts")
+            .select("title, slug, image_url")
+            .gt("published_at", data.published_at)
+            .order("published_at", { ascending: true })
+            .limit(1)
+            .maybeSingle(),
+        ]);
+
+        setPrevPost(prevRes.data || null);
+        setNextPost(nextRes.data || null);
       }
       setLoading(false);
     };
@@ -109,6 +139,67 @@ const BlogPost = () => {
           </motion.div>
         </div>
       </article>
+
+      {/* Post Navigation */}
+      {(prevPost || nextPost) && (
+        <nav className="border-t border-border/50 bg-section-alt">
+          <div className="container mx-auto px-4 max-w-5xl">
+            <div className="grid grid-cols-1 md:grid-cols-2">
+              {/* Previous (older) post - right side in RTL */}
+              {prevPost ? (
+                <Link
+                  to={`/blog/${prevPost.slug}`}
+                  className="group flex items-center gap-4 p-6 md:p-8 md:border-l border-b md:border-b-0 border-border/50 hover:bg-card/60 transition-colors"
+                >
+                  {prevPost.image_url && (
+                    <div className="w-20 h-20 md:w-24 md:h-24 rounded-xl overflow-hidden flex-shrink-0 relative">
+                      <img src={prevPost.image_url} alt={prevPost.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                      <div className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-black/30 to-transparent" />
+                    </div>
+                  )}
+                  <div className="flex-1 min-w-0">
+                    <span className="flex items-center gap-1 text-sm text-muted-foreground/60 font-body mb-1">
+                      <ArrowRight className="w-4 h-4" />
+                      הפוסט הקודם
+                    </span>
+                    <h3 className="text-lg font-heading font-bold text-foreground group-hover:text-primary transition-colors line-clamp-2">
+                      {prevPost.title}
+                    </h3>
+                  </div>
+                </Link>
+              ) : (
+                <div className="hidden md:block" />
+              )}
+
+              {/* Next (newer) post - left side in RTL */}
+              {nextPost ? (
+                <Link
+                  to={`/blog/${nextPost.slug}`}
+                  className="group flex items-center gap-4 p-6 md:p-8 hover:bg-card/60 transition-colors flex-row-reverse text-left"
+                >
+                  {nextPost.image_url && (
+                    <div className="w-20 h-20 md:w-24 md:h-24 rounded-xl overflow-hidden flex-shrink-0 relative">
+                      <img src={nextPost.image_url} alt={nextPost.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                      <div className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-black/30 to-transparent" />
+                    </div>
+                  )}
+                  <div className="flex-1 min-w-0">
+                    <span className="flex items-center justify-end gap-1 text-sm text-muted-foreground/60 font-body mb-1">
+                      הפוסט הבא
+                      <ArrowLeft className="w-4 h-4" />
+                    </span>
+                    <h3 className="text-lg font-heading font-bold text-foreground group-hover:text-primary transition-colors line-clamp-2">
+                      {nextPost.title}
+                    </h3>
+                  </div>
+                </Link>
+              ) : (
+                <div className="hidden md:block" />
+              )}
+            </div>
+          </div>
+        </nav>
+      )}
 
       <Footer />
     </div>
