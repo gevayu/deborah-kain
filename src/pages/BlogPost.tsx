@@ -6,6 +6,7 @@ import { FaWhatsapp, FaFacebookF, FaInstagram, FaLinkedinIn } from "react-icons/
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import AuthorBanner from "@/components/AuthorBanner";
+import BlogPostJsonLd from "@/components/BlogPostJsonLd";
 import { supabase } from "@/integrations/supabase/client";
 
 interface Post {
@@ -103,8 +104,8 @@ const BlogPost = () => {
 
   return (
     <div className="min-h-screen">
+      <BlogPostJsonLd {...post} />
       <Navbar />
-
       <article className="pt-24 pb-16 md:pt-32">
         <div className="container mx-auto px-4 max-w-3xl">
           <Link to="/blog" className="inline-flex items-center gap-2 text-primary hover:underline font-body mb-8">
