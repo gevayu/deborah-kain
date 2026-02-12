@@ -7,6 +7,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import AuthorBanner from "@/components/AuthorBanner";
 import BlogPostJsonLd from "@/components/BlogPostJsonLd";
+import useBlogMeta from "@/hooks/useBlogMeta";
 import { supabase } from "@/integrations/supabase/client";
 
 interface Post {
@@ -30,6 +31,13 @@ const BlogPost = () => {
   const [prevPost, setPrevPost] = useState<NavPost | null>(null);
   const [nextPost, setNextPost] = useState<NavPost | null>(null);
   const [loading, setLoading] = useState(true);
+
+  useBlogMeta({
+    title: post?.title || "",
+    content: post?.content || "",
+    image_url: post?.image_url || null,
+    slug: post?.slug || "",
+  });
 
   useEffect(() => {
     const fetchPost = async () => {
