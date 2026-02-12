@@ -129,7 +129,7 @@ const HeroSection = () => {
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, ease: "easeOut" }}
-          className="max-w-4xl mx-auto bg-black/22 backdrop-blur-md rounded-3xl py-12 px-6 md:px-12"
+          className="max-w-4xl mx-auto bg-black/25 backdrop-blur-md rounded-3xl py-12 px-6 md:px-12"
         >
           <h1 className="text-4xl md:text-6xl lg:text-7xl font-heading font-bold text-white leading-tight mb-6 drop-shadow-[0_2px_6px_rgba(0,0,0,0.5)]">
             ברוכים הבאים למסע
