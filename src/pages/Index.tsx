@@ -6,10 +6,12 @@ import TestimonialsSection from "@/components/TestimonialsSection";
 import LatestPosts from "@/components/LatestPosts";
 import CtaSection from "@/components/CtaSection";
 import Footer from "@/components/Footer";
+import JsonLd from "@/components/JsonLd";
 
 const Index = () => {
   return (
     <div className="min-h-screen">
+      <JsonLd />
       <Navbar />
       <HeroSection />
       <IntroSection />
