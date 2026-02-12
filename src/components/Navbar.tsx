@@ -30,7 +30,7 @@ const Navbar = () => {
     <nav className="fixed top-0 right-0 left-0 z-50 bg-background/80 backdrop-blur-md border-b border-border/50">
       <div className="container mx-auto flex items-center justify-between py-3 px-4">
         <Link to="/" className="flex items-center gap-2">
-          <img src={logo} alt="SoulRoad - דבורה קיין רייניש" className="h-[4.5rem] w-auto" />
+          <img src={logo} alt="SoulRoad - דבורה קיין רייניש" className="h-[6.75rem] w-auto" />
         </Link>
 
         {/* Desktop Nav */}
@@ -44,7 +44,7 @@ const Navbar = () => {
             >
               <Link
                 to={item.href}
-                className="text-foreground/80 hover:text-primary transition-colors font-body text-sm font-medium flex items-center gap-1"
+                className="text-foreground/80 hover:text-primary transition-colors font-body text-base font-medium flex items-center gap-1"
               >
                 {item.label}
                 {item.children && <ChevronDown className="w-3.5 h-3.5" />}
@@ -55,7 +55,7 @@ const Navbar = () => {
                     <li key={child.href}>
                       <Link
                         to={child.href}
-                        className="block px-4 py-2 text-sm text-foreground/80 hover:text-primary hover:bg-muted transition-colors font-body"
+                        className="block px-4 py-2 text-base text-foreground/80 hover:text-primary hover:bg-muted transition-colors font-body"
                       >
                         {child.label}
                       </Link>
