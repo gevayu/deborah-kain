@@ -117,7 +117,7 @@ const HeroSection = () => {
             </picture>
           </motion.div>
         </AnimatePresence>
-        <div className="absolute inset-0 bg-gradient-to-b from-background/60 via-background/40 to-background/90 z-[1]" />
+        <div className="absolute inset-0 bg-gradient-to-b from-background/75 via-background/55 to-background/90 z-[1]" />
       </motion.div>
 
       {/* Floating particles */}
