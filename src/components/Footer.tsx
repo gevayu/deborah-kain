@@ -23,7 +23,7 @@ const Footer = () => {
                 <li key={link.href}>
                   <Link
                     to={link.href}
-                    className="text-primary-foreground/70 hover:text-primary-foreground transition-colors font-body text-base"
+                    className="text-primary-foreground/70 hover:text-primary-foreground transition-colors font-body text-lg"
                   >
                     {link.label}
                   </Link>
@@ -33,10 +33,10 @@ const Footer = () => {
           </nav>
 
           <div className="border-t border-primary-foreground/15 w-full max-w-md pt-6 text-center">
-            <p className="text-primary-foreground/60 font-body text-base">
+            <p className="text-primary-foreground/60 font-body text-lg">
               דבורה קיין-רייניש — פסיכולוגית ופוטותרפיסטית
             </p>
-            <p className="text-primary-foreground/40 font-body text-sm mt-2">
+            <p className="text-primary-foreground/40 font-body text-base mt-2">
               © {new Date().getFullYear()} SoulRoad. כל הזכויות שמורות.
             </p>
           </div>

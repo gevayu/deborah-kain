@@ -44,7 +44,7 @@ const Navbar = () => {
             >
               <Link
                 to={item.href}
-                className="text-foreground/80 hover:text-primary transition-colors font-body text-base font-medium flex items-center gap-1"
+                className="text-foreground/80 hover:text-primary transition-colors font-body text-lg font-medium flex items-center gap-1"
               >
                 {item.label}
                 {item.children && <ChevronDown className="w-3.5 h-3.5" />}
