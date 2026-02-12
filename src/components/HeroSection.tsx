@@ -132,13 +132,9 @@ const HeroSection = () => {
           className="max-w-3xl mx-auto"
         >
           <h1 className="text-4xl md:text-6xl lg:text-7xl font-heading font-bold text-foreground leading-tight mb-6">
-            <span className="inline-block bg-background/60 backdrop-blur-md rounded-2xl px-6 py-3">
-              ברוכים הבאים למסע
-            </span>
+            ברוכים הבאים למסע
             <br />
-            <span className="inline-block bg-background/60 backdrop-blur-md rounded-2xl px-6 py-2 mt-2">
-              <span className="text-gradient-primary">הכרות עם החוכמה הפנימית שלך</span>
-            </span>
+            <span className="text-gradient-primary">הכרות עם החוכמה הפנימית שלך</span>
           </h1>
 
           <motion.p
