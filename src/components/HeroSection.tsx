@@ -123,13 +123,13 @@ const HeroSection = () => {
       {/* Floating particles */}
       <Particles />
 
-      {/* Content */}
+      {/* Content strip with blur */}
       <div className="relative z-10 container mx-auto px-4 text-center pt-20">
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, ease: "easeOut" }}
-          className="max-w-3xl mx-auto"
+          className="max-w-4xl mx-auto bg-background/30 backdrop-blur-md rounded-3xl py-12 px-6 md:px-12"
         >
           <h1 className="text-4xl md:text-6xl lg:text-7xl font-heading font-bold text-foreground leading-tight mb-6 drop-shadow-[0_2px_4px_rgba(0,0,0,0.3)]">
             ברוכים הבאים למסע
