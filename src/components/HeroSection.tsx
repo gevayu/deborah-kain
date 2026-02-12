@@ -117,7 +117,7 @@ const HeroSection = () => {
             </picture>
           </motion.div>
         </AnimatePresence>
-        <div className="absolute inset-0 bg-gradient-to-b from-background/75 via-background/55 to-background/90 z-[1]" />
+        <div className="absolute inset-0 bg-gradient-to-b from-background/80 via-background/65 to-background/90 z-[1]" />
       </motion.div>
 
       {/* Floating particles */}
@@ -131,7 +131,7 @@ const HeroSection = () => {
           transition={{ duration: 1, ease: "easeOut" }}
           className="max-w-3xl mx-auto"
         >
-          <h1 className="text-4xl md:text-6xl lg:text-7xl font-heading font-bold text-foreground leading-tight mb-6">
+          <h1 className="text-4xl md:text-6xl lg:text-7xl font-heading font-bold text-foreground leading-tight mb-6 drop-shadow-[0_2px_4px_rgba(0,0,0,0.3)]">
             ברוכים הבאים למסע
             <br />
             <span className="text-gradient-primary">הכרות עם החוכמה הפנימית שלך</span>
@@ -141,7 +141,7 @@ const HeroSection = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.5, duration: 0.8 }}
-            className="text-xl md:text-2xl text-muted-foreground font-body leading-relaxed mb-10 max-w-2xl mx-auto"
+            className="text-xl md:text-2xl text-foreground/80 font-body leading-relaxed mb-10 max-w-2xl mx-auto drop-shadow-[0_1px_3px_rgba(0,0,0,0.2)]"
           >
             כאן, בין המילים והדימויים, בין הדמיון והמציאות — 
             נפתח יחד דלת לעולם הפנימי שלך
