@@ -134,7 +134,7 @@ const HeroSection = () => {
           <h1 className="text-4xl md:text-6xl lg:text-7xl font-heading font-bold text-white leading-tight mb-6 drop-shadow-[0_2px_6px_rgba(0,0,0,0.5)]">
             ברוכים הבאים למסע
             <br />
-            <span className="bg-clip-text text-transparent bg-gradient-to-l from-green-300 to-green-200 drop-shadow-[0_2px_6px_rgba(0,0,0,0.5)]">הכרות עם החוכמה הפנימית שלך</span>
+            <span className="bg-clip-text text-transparent bg-gradient-to-l from-emerald-400 to-green-300 drop-shadow-[0_2px_6px_rgba(0,0,0,0.5)]">הכרות עם החוכמה הפנימית שלך</span>
           </h1>
 
           <motion.p
