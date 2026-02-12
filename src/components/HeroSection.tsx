@@ -129,12 +129,12 @@ const HeroSection = () => {
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, ease: "easeOut" }}
-          className="max-w-4xl mx-auto bg-black/45 backdrop-blur-md rounded-3xl py-12 px-6 md:px-12"
+          className="max-w-4xl mx-auto bg-black/22 backdrop-blur-md rounded-3xl py-12 px-6 md:px-12"
         >
           <h1 className="text-4xl md:text-6xl lg:text-7xl font-heading font-bold text-white leading-tight mb-6 drop-shadow-[0_2px_6px_rgba(0,0,0,0.5)]">
             ברוכים הבאים למסע
             <br />
-            <span className="text-white/90">הכרות עם החוכמה הפנימית שלך</span>
+            <span className="bg-clip-text text-transparent bg-gradient-to-l from-green-300 to-green-200 drop-shadow-[0_2px_6px_rgba(0,0,0,0.5)]">הכרות עם החוכמה הפנימית שלך</span>
           </h1>
 
           <motion.p
@@ -161,7 +161,7 @@ const HeroSection = () => {
             </a>
             <a
               href="/services"
-              className="inline-block border-2 border-primary text-primary px-8 py-4 rounded-lg font-body font-medium text-base hover:bg-primary/10 transition-colors"
+              className="inline-block border-2 border-white text-white px-8 py-4 rounded-lg font-body font-medium text-base hover:bg-white/10 transition-colors"
             >
               סדנאות קבוצתיות
             </a>
