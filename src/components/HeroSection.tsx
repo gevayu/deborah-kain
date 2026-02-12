@@ -132,11 +132,11 @@ const HeroSection = () => {
           className="max-w-3xl mx-auto"
         >
           <h1 className="text-4xl md:text-6xl lg:text-7xl font-heading font-bold text-foreground leading-tight mb-6">
-            <span className="inline-block bg-background/40 backdrop-blur-sm rounded-xl px-6 py-3">
+            <span className="inline-block bg-background/60 backdrop-blur-md rounded-2xl px-6 py-3">
               ברוכים הבאים למסע
             </span>
             <br />
-            <span className="inline-block bg-background/40 backdrop-blur-sm rounded-xl px-6 py-2 mt-2">
+            <span className="inline-block bg-background/60 backdrop-blur-md rounded-2xl px-6 py-2 mt-2">
               <span className="text-gradient-primary">הכרות עם החוכמה הפנימית שלך</span>
             </span>
           </h1>
