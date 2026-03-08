@@ -97,7 +97,7 @@ const UpcomingWorkshops = ({ filterType }: UpcomingWorkshopsProps) => {
                   </div>
                 );
               })()}
-              <div className="p-6 md:p-8 transition-colors duration-500 group-hover:bg-primary/5">
+              <div className="p-6 md:p-8 group-hover:bg-white" style={{ transition: "background-color 2s ease-in-out" }}>
               {filterType === "all" && workshop.types?.length > 0 && (
                 <span className="inline-block text-xs font-body font-medium px-3 py-1 rounded-full bg-primary/10 text-primary mb-3">
                   {workshop.types.includes("phototherapy") && workshop.types.includes("soul-collage")
