@@ -1,0 +1,113 @@
+import { useEffect, useState } from "react";
+import { motion } from "framer-motion";
+import { supabase } from "@/integrations/supabase/client";
+import { CalendarIcon, MapPin, Users, Coins } from "lucide-react";
+
+interface Workshop {
+  id: string;
+  name: string;
+  date: string;
+  location: string;
+  description: string;
+  target_audience: string;
+  cost: string;
+  types: string[];
+}
+
+interface UpcomingWorkshopsProps {
+  filterType: "phototherapy" | "soul-collage" | "all";
+}
+
+const UpcomingWorkshops = ({ filterType }: UpcomingWorkshopsProps) => {
+  const [workshops, setWorkshops] = useState<Workshop[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchWorkshops = async () => {
+      const today = new Date().toISOString().split("T")[0];
+      const { data } = await supabase
+        .from("workshops")
+        .select("*")
+        .gte("date", today)
+        .order("date", { ascending: true });
+
+      if (data) {
+        const filtered =
+          filterType === "all"
+            ? data
+            : data.filter((w: any) => w.types?.includes(filterType));
+        setWorkshops(filtered as Workshop[]);
+      }
+      setLoading(false);
+    };
+    fetchWorkshops();
+  }, [filterType]);
+
+  if (loading) return null;
+  if (workshops.length === 0) return null;
+
+  return (
+    <section className="py-16 md:py-24 bg-section-alt">
+      <div className="container mx-auto px-4 max-w-4xl">
+        <motion.h2
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="text-3xl md:text-4xl font-heading font-bold text-foreground text-center mb-12"
+        >
+          סדנאות קרובות
+        </motion.h2>
+        <div className="grid gap-6">
+          {workshops.map((workshop, i) => (
+            <motion.div
+              key={workshop.id}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: i * 0.1 }}
+              className="bg-card/80 backdrop-blur-sm rounded-2xl p-6 md:p-8 border border-border/50"
+              dir="rtl"
+            >
+              <h3 className="text-2xl font-heading font-bold text-foreground mb-3">
+                {workshop.name}
+              </h3>
+              <p className="text-muted-foreground font-body leading-relaxed mb-4">
+                {workshop.description}
+              </p>
+              <div className="flex flex-wrap gap-4 text-sm text-muted-foreground font-body">
+                <span className="flex items-center gap-1.5">
+                  <CalendarIcon className="w-4 h-4" />
+                  {new Date(workshop.date).toLocaleDateString("he-IL", {
+                    weekday: "long",
+                    year: "numeric",
+                    month: "long",
+                    day: "numeric",
+                  })}
+                </span>
+                <span className="flex items-center gap-1.5">
+                  <MapPin className="w-4 h-4" />
+                  {workshop.location}
+                </span>
+                {workshop.target_audience && (
+                  <span className="flex items-center gap-1.5">
+                    <Users className="w-4 h-4" />
+                    {workshop.target_audience}
+                  </span>
+                )}
+                {workshop.cost && (
+                  <span className="flex items-center gap-1.5">
+                    <Coins className="w-4 h-4" />
+                    {workshop.cost}
+                  </span>
+                )}
+              </div>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default UpcomingWorkshops;

@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import UpcomingWorkshops from "@/components/UpcomingWorkshops";
 import OptimizedImage from "@/components/OptimizedImage";
 import servicesHero from "@/assets/services-hero.jpg";
 import servicesHeroWebp from "@/assets/services-hero.jpg?format=webp&quality=80";
@@ -161,6 +162,8 @@ const Services = () => {
           </motion.div>
         </div>
       </section>
+
+      <UpcomingWorkshops filterType="all" />
 
       <Footer />
     </div>
