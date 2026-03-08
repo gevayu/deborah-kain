@@ -66,9 +66,21 @@ const UpcomingWorkshops = ({ filterType }: UpcomingWorkshopsProps) => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: i * 0.1 }}
-              className="bg-card/80 backdrop-blur-sm rounded-2xl p-6 md:p-8 border border-border/50"
+              className="bg-card/80 backdrop-blur-sm rounded-2xl overflow-hidden border border-border/50"
               dir="rtl"
             >
+              {/* Image strip */}
+              <div 
+                className="h-24 md:h-28 w-full bg-gradient-to-l from-primary/20 via-primary/10 to-transparent"
+                style={{
+                  backgroundImage: workshop.types?.includes("phototherapy") 
+                    ? "linear-gradient(to left, hsl(var(--primary) / 0.25), hsl(var(--primary) / 0.1), transparent)"
+                    : workshop.types?.includes("soul-collage")
+                    ? "linear-gradient(to left, hsl(var(--accent) / 0.3), hsl(var(--accent) / 0.1), transparent)"
+                    : "linear-gradient(to left, hsl(var(--muted) / 0.4), hsl(var(--muted) / 0.15), transparent)"
+                }}
+              />
+              <div className="p-6 md:p-8">
               {filterType === "all" && workshop.types?.length > 0 && (
                 <span className="inline-block text-xs font-body font-medium px-3 py-1 rounded-full bg-primary/10 text-primary mb-3">
                   {workshop.types.includes("phototherapy") && workshop.types.includes("soul-collage")
@@ -125,6 +137,7 @@ const UpcomingWorkshops = ({ filterType }: UpcomingWorkshopsProps) => {
                   <MessageCircle className="w-4 h-4" />
                   יצירת קשר
                 </a>
+              </div>
               </div>
             </motion.div>
           ))}
