@@ -307,6 +307,61 @@ const WorkshopManager = () => {
                 ))}
               </div>
             </div>
+            <div className="space-y-2">
+              <Label>תמונה</Label>
+              <input
+                ref={fileInputRef}
+                type="file"
+                accept="image/*"
+                className="hidden"
+                onChange={async (e) => {
+                  const file = e.target.files?.[0];
+                  if (!file) return;
+                  setUploading(true);
+                  const ext = file.name.split(".").pop() || "jpg";
+                  const fileName = `workshops/${Date.now()}_${crypto.randomUUID()}.${ext}`;
+                  const { error: uploadError } = await supabase.storage
+                    .from("blog-images")
+                    .upload(fileName, file, { contentType: file.type, upsert: true });
+                  if (uploadError) {
+                    toast({ title: "שגיאה בהעלאה", description: uploadError.message, variant: "destructive" });
+                  } else {
+                    const { data } = supabase.storage.from("blog-images").getPublicUrl(fileName);
+                    setForm({ ...form, image_url: data.publicUrl });
+                    setImagePreview(data.publicUrl);
+                    toast({ title: "התמונה הועלתה בהצלחה" });
+                  }
+                  setUploading(false);
+                }}
+              />
+              {imagePreview ? (
+                <div className="relative w-full aspect-[3/1] rounded-lg overflow-hidden border border-border">
+                  <img src={imagePreview} alt="תצוגה מקדימה" className="w-full h-full object-cover" />
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setImagePreview(null);
+                      setForm({ ...form, image_url: "" });
+                      if (fileInputRef.current) fileInputRef.current.value = "";
+                    }}
+                    className="absolute top-2 left-2 bg-background/80 rounded-full p-1 hover:bg-background"
+                  >
+                    <X className="w-4 h-4" />
+                  </button>
+                </div>
+              ) : (
+                <Button
+                  type="button"
+                  variant="outline"
+                  className="w-full"
+                  disabled={uploading}
+                  onClick={() => fileInputRef.current?.click()}
+                >
+                  <Upload className="w-4 h-4 ml-2" />
+                  {uploading ? "מעלה..." : "העלה תמונה"}
+                </Button>
+              )}
+            </div>
             <Button
               onClick={handleSave}
               className="w-full"
