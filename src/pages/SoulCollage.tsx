@@ -183,6 +183,9 @@ const SoulCollage = () => {
                 רוצים להתנסות?
               </a>
             </div>
+
+            {/* Featured Images */}
+            <FeaturedImages images={scFeaturedImages} title="מתוך הסדנאות" />
           </motion.div>
         </div>
       </section>
