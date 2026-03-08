@@ -68,6 +68,45 @@ export type Database = {
         }
         Relationships: []
       }
+      workshops: {
+        Row: {
+          cost: string
+          created_at: string
+          date: string
+          description: string
+          id: string
+          location: string
+          name: string
+          target_audience: string
+          types: Database["public"]["Enums"]["workshop_type"][]
+          updated_at: string
+        }
+        Insert: {
+          cost?: string
+          created_at?: string
+          date: string
+          description: string
+          id?: string
+          location: string
+          name: string
+          target_audience?: string
+          types?: Database["public"]["Enums"]["workshop_type"][]
+          updated_at?: string
+        }
+        Update: {
+          cost?: string
+          created_at?: string
+          date?: string
+          description?: string
+          id?: string
+          location?: string
+          name?: string
+          target_audience?: string
+          types?: Database["public"]["Enums"]["workshop_type"][]
+          updated_at?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
@@ -83,6 +122,7 @@ export type Database = {
     }
     Enums: {
       app_role: "admin" | "user"
+      workshop_type: "phototherapy" | "soul-collage" | "general"
     }
     CompositeTypes: {
       [_ in never]: never
@@ -211,6 +251,7 @@ export const Constants = {
   public: {
     Enums: {
       app_role: ["admin", "user"],
+      workshop_type: ["phototherapy", "soul-collage", "general"],
     },
   },
 } as const
