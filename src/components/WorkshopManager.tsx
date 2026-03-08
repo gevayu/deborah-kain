@@ -32,6 +32,7 @@ interface Workshop {
 const WORKSHOP_TYPES = [
   { value: "phototherapy", label: "פוטותרפיה" },
   { value: "soul-collage", label: "סול קולאז'" },
+  { value: "soul-road", label: "סול רואד" },
   { value: "general", label: "כללי" },
 ];
 
