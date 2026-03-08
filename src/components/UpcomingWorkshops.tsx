@@ -69,6 +69,19 @@ const UpcomingWorkshops = ({ filterType }: UpcomingWorkshopsProps) => {
               className="bg-card/80 backdrop-blur-sm rounded-2xl p-6 md:p-8 border border-border/50"
               dir="rtl"
             >
+              {filterType === "all" && workshop.types?.length > 0 && (
+                <span className="inline-block text-xs font-body font-medium px-3 py-1 rounded-full bg-primary/10 text-primary mb-3">
+                  {workshop.types.includes("phototherapy") && workshop.types.includes("soul-collage")
+                    ? "סדנה משולבת"
+                    : workshop.types.includes("phototherapy")
+                    ? "סדנת פוטותרפיה"
+                    : workshop.types.includes("soul-collage")
+                    ? "סדנת סול קולאז'"
+                    : workshop.types.includes("soul-road")
+                    ? "סדנת סול רואד"
+                    : "סדנה כללית"}
+                </span>
+              )}
               <h3 className="text-2xl font-heading font-bold text-foreground mb-3">
                 {workshop.name}
               </h3>
