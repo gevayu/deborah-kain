@@ -92,7 +92,7 @@ const UpcomingWorkshops = ({ filterType }: UpcomingWorkshopsProps) => {
                 const img = imgs[i % imgs.length];
                 return (
                   <div className="h-24 md:h-28 w-full relative overflow-hidden">
-                    <img src={img} alt="" className="w-full h-full object-cover transition-transform duration-[1200ms] ease-out group-hover:scale-110" />
+                    <img src={img} alt="" className="w-full h-full object-cover transition-transform duration-[3000ms] ease-in-out group-hover:scale-110" />
                     <div className="absolute inset-0 bg-gradient-to-t from-emerald-800/40 via-emerald-600/20 to-emerald-400/10 transition-opacity duration-500 group-hover:opacity-50" />
                   </div>
                 );
