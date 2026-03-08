@@ -113,7 +113,7 @@ const WorkshopManager = () => {
       description: form.description,
       target_audience: form.target_audience,
       cost: form.cost,
-      types: form.types,
+    types: form.types as ("phototherapy" | "soul-collage" | "general")[],
     };
 
     let error;
@@ -123,7 +123,7 @@ const WorkshopManager = () => {
         .update(workshopData)
         .eq("id", editingWorkshop.id));
     } else {
-      ({ error } = await supabase.from("workshops").insert(workshopData));
+      ({ error } = await supabase.from("workshops").insert([workshopData]));
     }
 
     if (error) {
