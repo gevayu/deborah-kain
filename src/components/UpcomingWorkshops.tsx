@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { supabase } from "@/integrations/supabase/client";
-import { CalendarIcon, MapPin, Users, Coins } from "lucide-react";
+import { CalendarIcon, MapPin, Users, Coins, MessageCircle } from "lucide-react";
 
 interface Workshop {
   id: string;
@@ -114,6 +114,17 @@ const UpcomingWorkshops = ({ filterType }: UpcomingWorkshopsProps) => {
                     {workshop.cost}
                   </span>
                 )}
+              </div>
+              <div className="mt-4 flex justify-start">
+                <a
+                  href={`https://wa.me/972543098970?text=${encodeURIComponent(`היי, אשמח לשמוע פרטים נוספים על הסדנה: ${workshop.name}`)}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1.5 text-sm font-body font-medium px-4 py-2 rounded-lg bg-primary/10 text-primary hover:bg-primary/20 transition-colors"
+                >
+                  <MessageCircle className="w-4 h-4" />
+                  יצירת קשר
+                </a>
               </div>
             </motion.div>
           ))}
