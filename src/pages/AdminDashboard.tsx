@@ -180,57 +180,73 @@ const AdminDashboard = () => {
       </header>
 
       <main className="container mx-auto px-4 py-8">
-        {loading ? (
-          <p className="text-center text-muted-foreground">טוען...</p>
-        ) : posts.length === 0 ? (
-          <div className="text-center py-16">
-            <p className="text-muted-foreground mb-4">אין פוסטים עדיין</p>
-            <Button onClick={openNew}>צור פוסט ראשון</Button>
-          </div>
-        ) : (
-          <div className="space-y-3">
-            {posts.map((post, index) => (
-              <div key={post.id} className="flex items-center justify-between p-4 bg-card rounded-lg border border-border">
-                <div className="flex items-center gap-2">
-                  <div className="flex flex-col gap-1">
-                    <Button
-                      variant="ghost"
-                      size="icon"
-                      className="h-6 w-6"
-                      disabled={index === 0}
-                      onClick={() => movePost(index, "up")}
-                    >
-                      <ArrowUp className="w-3 h-3" />
-                    </Button>
-                    <Button
-                      variant="ghost"
-                      size="icon"
-                      className="h-6 w-6"
-                      disabled={index === posts.length - 1}
-                      onClick={() => movePost(index, "down")}
-                    >
-                      <ArrowDown className="w-3 h-3" />
-                    </Button>
-                  </div>
-                  <div className="flex-1 min-w-0">
-                    <h3 className="font-heading font-semibold text-foreground truncate">{post.title}</h3>
-                    <p className="text-sm text-muted-foreground mt-1">
-                      {new Date(post.published_at).toLocaleDateString("he-IL")}
-                    </p>
-                  </div>
-                </div>
-                <div className="flex gap-2 mr-4">
-                  <Button variant="ghost" size="icon" onClick={() => openEdit(post)}>
-                    <Pencil className="w-4 h-4" />
-                  </Button>
-                  <Button variant="ghost" size="icon" onClick={() => handleDelete(post.id)}>
-                    <Trash2 className="w-4 h-4 text-destructive" />
-                  </Button>
-                </div>
+        <Tabs defaultValue="blog" dir="rtl">
+          <TabsList className="mb-6">
+            <TabsTrigger value="blog">בלוג</TabsTrigger>
+            <TabsTrigger value="workshops">סדנאות</TabsTrigger>
+          </TabsList>
+          <TabsContent value="blog">
+            <div className="flex justify-end mb-4">
+              <Button onClick={openNew} size="sm">
+                <Plus className="w-4 h-4 ml-1" /> פוסט חדש
+              </Button>
+            </div>
+            {loading ? (
+              <p className="text-center text-muted-foreground">טוען...</p>
+            ) : posts.length === 0 ? (
+              <div className="text-center py-16">
+                <p className="text-muted-foreground mb-4">אין פוסטים עדיין</p>
+                <Button onClick={openNew}>צור פוסט ראשון</Button>
               </div>
-            ))}
-          </div>
-        )}
+            ) : (
+              <div className="space-y-3">
+                {posts.map((post, index) => (
+                  <div key={post.id} className="flex items-center justify-between p-4 bg-card rounded-lg border border-border">
+                    <div className="flex items-center gap-2">
+                      <div className="flex flex-col gap-1">
+                        <Button
+                          variant="ghost"
+                          size="icon"
+                          className="h-6 w-6"
+                          disabled={index === 0}
+                          onClick={() => movePost(index, "up")}
+                        >
+                          <ArrowUp className="w-3 h-3" />
+                        </Button>
+                        <Button
+                          variant="ghost"
+                          size="icon"
+                          className="h-6 w-6"
+                          disabled={index === posts.length - 1}
+                          onClick={() => movePost(index, "down")}
+                        >
+                          <ArrowDown className="w-3 h-3" />
+                        </Button>
+                      </div>
+                      <div className="flex-1 min-w-0">
+                        <h3 className="font-heading font-semibold text-foreground truncate">{post.title}</h3>
+                        <p className="text-sm text-muted-foreground mt-1">
+                          {new Date(post.published_at).toLocaleDateString("he-IL")}
+                        </p>
+                      </div>
+                    </div>
+                    <div className="flex gap-2 mr-4">
+                      <Button variant="ghost" size="icon" onClick={() => openEdit(post)}>
+                        <Pencil className="w-4 h-4" />
+                      </Button>
+                      <Button variant="ghost" size="icon" onClick={() => handleDelete(post.id)}>
+                        <Trash2 className="w-4 h-4 text-destructive" />
+                      </Button>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            )}
+          </TabsContent>
+          <TabsContent value="workshops">
+            <WorkshopManager />
+          </TabsContent>
+        </Tabs>
       </main>
 
       <Dialog open={dialogOpen} onOpenChange={setDialogOpen}>

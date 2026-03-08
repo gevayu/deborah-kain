@@ -174,6 +174,8 @@ const SoulCollage = () => {
         </div>
       </section>
 
+      <UpcomingWorkshops filterType="soul-collage" />
+
       <Footer />
     </div>
   );

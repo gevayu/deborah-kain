@@ -280,6 +280,8 @@ const Phototherapy = () => {
         )}
       </AnimatePresence>
 
+      <UpcomingWorkshops filterType="phototherapy" />
+
       <Footer />
     </div>
   );

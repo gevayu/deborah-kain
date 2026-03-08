@@ -163,6 +163,8 @@ const Services = () => {
         </div>
       </section>
 
+      <UpcomingWorkshops filterType="all" />
+
       <Footer />
     </div>
   );
