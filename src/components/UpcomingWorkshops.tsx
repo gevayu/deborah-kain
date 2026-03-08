@@ -90,7 +90,7 @@ const UpcomingWorkshops = ({ filterType }: UpcomingWorkshopsProps) => {
                 const hasSC = workshop.types?.includes("soul-collage");
                 const category = hasPhoto && hasSC ? "mixed" : hasPhoto ? "phototherapy" : hasSC ? "soul-collage" : "default";
                 const imgs = stripImages[category];
-                const img = imgs[i % imgs.length];
+                const img = workshop.image_url || imgs[i % imgs.length];
                 return (
                   <div className="h-24 md:h-28 w-full relative overflow-hidden">
                     <img src={img} alt="" className="w-full h-full object-cover group-hover:scale-110" style={{ transition: "transform 3s ease-in-out" }} />
