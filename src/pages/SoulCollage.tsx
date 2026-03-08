@@ -19,6 +19,18 @@ import sc3Webp from "@/assets/soulcollage-3.jpg?format=webp&quality=80";
 import sc4Webp from "@/assets/soulcollage-4.jpg?format=webp&quality=80";
 import sc5Webp from "@/assets/soulcollage-5.jpg?format=webp&quality=80";
 import sc6Webp from "@/assets/soulcollage-6.jpg?format=webp&quality=80";
+import sf1 from "@/assets/soulcollage-featured-1.jpg";
+import sf2 from "@/assets/soulcollage-featured-2.jpg";
+import sf3 from "@/assets/soulcollage-featured-3.jpg";
+import sf1Webp from "@/assets/soulcollage-featured-1.jpg?format=webp&quality=80";
+import sf2Webp from "@/assets/soulcollage-featured-2.jpg?format=webp&quality=80";
+import sf3Webp from "@/assets/soulcollage-featured-3.jpg?format=webp&quality=80";
+
+const scFeaturedImages = [
+  { src: sf1, webp: sf1Webp, alt: "יצירת קלפי סול קולאז'", caption: "תהליך היצירה — גוזרים, מדביקים ויוצרים קלפים אישיים שמספרים את הסיפור שלנו" },
+  { src: sf2, webp: sf2Webp, alt: "קלפי סול קולאז' מוכנים", caption: "כל קלף הוא עולם שלם — מפה פנימית שמגלה את הקולות השונים שבנו" },
+  { src: sf3, webp: sf3Webp, alt: "שיתוף קבוצתי בסדנה", caption: "מעגל שיתוף — מרחב בטוח שבו כל קול מקבל מקום להישמע" },
+];
 
 const galleryImages = [
   { src: sc1, webp: sc1Webp, alt: "עבודת סול קולאז' 1" },
