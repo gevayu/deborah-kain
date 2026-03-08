@@ -91,9 +91,9 @@ const UpcomingWorkshops = ({ filterType }: UpcomingWorkshopsProps) => {
                 const imgs = stripImages[category];
                 const img = imgs[i % imgs.length];
                 return (
-                  <div className="h-24 md:h-28 w-full relative overflow-hidden group/strip">
+                  <div className="h-24 md:h-28 w-full relative overflow-hidden cursor-pointer group/strip">
                     <img src={img} alt="" className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover/strip:scale-110" />
-                    <div className="absolute inset-0 bg-gradient-to-t from-emerald-800/40 via-emerald-600/20 to-emerald-400/10 transition-opacity duration-500 group-hover/strip:from-emerald-800/25 group-hover/strip:via-emerald-600/10" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-emerald-800/40 via-emerald-600/20 to-emerald-400/10 transition-opacity duration-500 group-hover/strip:opacity-50" />
                   </div>
                 );
               })()}
