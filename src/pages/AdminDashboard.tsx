@@ -170,11 +170,8 @@ const AdminDashboard = () => {
     <div className="min-h-screen bg-background" dir="rtl">
       <header className="border-b border-border bg-background/95 backdrop-blur-sm sticky top-0 z-10">
         <div className="container mx-auto px-4 py-4 flex items-center justify-between">
-          <h1 className="text-xl font-heading font-bold text-foreground">ניהול בלוג</h1>
+          <h1 className="text-xl font-heading font-bold text-foreground">ניהול אתר</h1>
           <div className="flex gap-2">
-            <Button onClick={openNew} size="sm">
-              <Plus className="w-4 h-4 ml-1" /> פוסט חדש
-            </Button>
             <Button variant="outline" size="sm" onClick={handleLogout}>
               <LogOut className="w-4 h-4 ml-1" /> יציאה
             </Button>
