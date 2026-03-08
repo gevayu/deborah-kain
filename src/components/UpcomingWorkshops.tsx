@@ -84,16 +84,19 @@ const UpcomingWorkshops = ({ filterType }: UpcomingWorkshopsProps) => {
               dir="rtl"
             >
               {/* Image strip */}
-              <div 
-                className="h-24 md:h-28 w-full bg-gradient-to-l from-primary/20 via-primary/10 to-transparent"
-                style={{
-                  backgroundImage: workshop.types?.includes("phototherapy") 
-                    ? "linear-gradient(to left, hsl(var(--primary) / 0.25), hsl(var(--primary) / 0.1), transparent)"
-                    : workshop.types?.includes("soul-collage")
-                    ? "linear-gradient(to left, hsl(var(--accent) / 0.3), hsl(var(--accent) / 0.1), transparent)"
-                    : "linear-gradient(to left, hsl(var(--muted) / 0.4), hsl(var(--muted) / 0.15), transparent)"
-                }}
-              />
+              {(() => {
+                const hasPhoto = workshop.types?.includes("phototherapy");
+                const hasSC = workshop.types?.includes("soul-collage");
+                const category = hasPhoto && hasSC ? "mixed" : hasPhoto ? "phototherapy" : hasSC ? "soul-collage" : "default";
+                const imgs = stripImages[category];
+                const img = imgs[i % imgs.length];
+                return (
+                  <div className="h-24 md:h-28 w-full relative overflow-hidden">
+                    <img src={img} alt="" className="w-full h-full object-cover" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-primary/30 via-primary/10 to-primary/5" />
+                  </div>
+                );
+              })()}
               <div className="p-6 md:p-8">
               {filterType === "all" && workshop.types?.length > 0 && (
                 <span className="inline-block text-xs font-body font-medium px-3 py-1 rounded-full bg-primary/10 text-primary mb-3">
