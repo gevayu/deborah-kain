@@ -138,6 +138,7 @@ const UpcomingWorkshops = ({ filterType }: UpcomingWorkshopsProps) => {
                   יצירת קשר
                 </a>
               </div>
+              </div>
             </motion.div>
           ))}
         </div>
