@@ -50,6 +50,7 @@ const WorkshopManager = () => {
     target_audience: "",
     cost: "",
     types: [] as string[],
+    image_url: "",
   });
   const [saving, setSaving] = useState(false);
   const [uploading, setUploading] = useState(false);
