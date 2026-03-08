@@ -3,6 +3,20 @@ import { motion } from "framer-motion";
 import { supabase } from "@/integrations/supabase/client";
 import { CalendarIcon, MapPin, Users, Coins, MessageCircle } from "lucide-react";
 
+import photo1 from "@/assets/phototherapy-1.jpg";
+import photo2 from "@/assets/phototherapy-3.jpg";
+import photo3 from "@/assets/phototherapy-5.jpg";
+import sc1 from "@/assets/soulcollage-1.jpg";
+import sc2 from "@/assets/soulcollage-3.jpg";
+import sc3 from "@/assets/soulcollage-5.jpg";
+
+const stripImages: Record<string, string[]> = {
+  phototherapy: [photo1, photo2, photo3],
+  "soul-collage": [sc1, sc2, sc3],
+  mixed: [photo1, sc1, photo2],
+  default: [photo3, sc3, photo1],
+};
+
 interface Workshop {
   id: string;
   name: string;
