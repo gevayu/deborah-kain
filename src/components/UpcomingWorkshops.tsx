@@ -93,7 +93,7 @@ const UpcomingWorkshops = ({ filterType }: UpcomingWorkshopsProps) => {
                 return (
                   <div className="h-24 md:h-28 w-full relative overflow-hidden">
                     <img src={img} alt="" className="w-full h-full object-cover" />
-                    <div className="absolute inset-0 bg-gradient-to-t from-primary/30 via-primary/10 to-primary/5" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-emerald-800/40 via-emerald-600/20 to-emerald-400/10" />
                   </div>
                 );
               })()}
