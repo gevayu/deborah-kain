@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import Navbar from "@/components/Navbar";
+import UpcomingWorkshops from "@/components/UpcomingWorkshops";
 import Footer from "@/components/Footer";
 import ImageGallery from "@/components/ImageGallery";
 import OptimizedImage from "@/components/OptimizedImage";
