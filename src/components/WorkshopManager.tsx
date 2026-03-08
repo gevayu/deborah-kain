@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -6,7 +6,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { Checkbox } from "@/components/ui/checkbox";
 import { useToast } from "@/hooks/use-toast";
-import { Pencil, Trash2, Plus, CalendarIcon } from "lucide-react";
+import { Pencil, Trash2, Plus, CalendarIcon, Upload, X } from "lucide-react";
 import { format } from "date-fns";
 import { cn } from "@/lib/utils";
 import { Calendar } from "@/components/ui/calendar";
@@ -27,6 +27,7 @@ interface Workshop {
   target_audience: string;
   cost: string;
   types: string[];
+  image_url: string | null;
 }
 
 const WORKSHOP_TYPES = [
@@ -49,8 +50,12 @@ const WorkshopManager = () => {
     target_audience: "",
     cost: "",
     types: [] as string[],
+    image_url: "",
   });
   const [saving, setSaving] = useState(false);
+  const [uploading, setUploading] = useState(false);
+  const [imagePreview, setImagePreview] = useState<string | null>(null);
+  const fileInputRef = useRef<HTMLInputElement>(null);
   const { toast } = useToast();
 
   useEffect(() => {
@@ -76,7 +81,9 @@ const WorkshopManager = () => {
       target_audience: "",
       cost: "",
       types: [],
+      image_url: "",
     });
+    setImagePreview(null);
     setDialogOpen(true);
   };
 
@@ -90,7 +97,9 @@ const WorkshopManager = () => {
       target_audience: w.target_audience,
       cost: w.cost,
       types: w.types || [],
+      image_url: w.image_url || "",
     });
+    setImagePreview(w.image_url || null);
     setDialogOpen(true);
   };
 
@@ -114,7 +123,8 @@ const WorkshopManager = () => {
       description: form.description,
       target_audience: form.target_audience,
       cost: form.cost,
-    types: form.types as ("phototherapy" | "soul-collage" | "general")[],
+      image_url: form.image_url || null,
+      types: form.types as ("phototherapy" | "soul-collage" | "soul-road" | "general")[],
     };
 
     let error;
@@ -297,6 +307,61 @@ const WorkshopManager = () => {
                   </label>
                 ))}
               </div>
+            </div>
+            <div className="space-y-2">
+              <Label>תמונה</Label>
+              <input
+                ref={fileInputRef}
+                type="file"
+                accept="image/*"
+                className="hidden"
+                onChange={async (e) => {
+                  const file = e.target.files?.[0];
+                  if (!file) return;
+                  setUploading(true);
+                  const ext = file.name.split(".").pop() || "jpg";
+                  const fileName = `workshops/${Date.now()}_${crypto.randomUUID()}.${ext}`;
+                  const { error: uploadError } = await supabase.storage
+                    .from("blog-images")
+                    .upload(fileName, file, { contentType: file.type, upsert: true });
+                  if (uploadError) {
+                    toast({ title: "שגיאה בהעלאה", description: uploadError.message, variant: "destructive" });
+                  } else {
+                    const { data } = supabase.storage.from("blog-images").getPublicUrl(fileName);
+                    setForm({ ...form, image_url: data.publicUrl });
+                    setImagePreview(data.publicUrl);
+                    toast({ title: "התמונה הועלתה בהצלחה" });
+                  }
+                  setUploading(false);
+                }}
+              />
+              {imagePreview ? (
+                <div className="relative w-full aspect-[3/1] rounded-lg overflow-hidden border border-border">
+                  <img src={imagePreview} alt="תצוגה מקדימה" className="w-full h-full object-cover" />
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setImagePreview(null);
+                      setForm({ ...form, image_url: "" });
+                      if (fileInputRef.current) fileInputRef.current.value = "";
+                    }}
+                    className="absolute top-2 left-2 bg-background/80 rounded-full p-1 hover:bg-background"
+                  >
+                    <X className="w-4 h-4" />
+                  </button>
+                </div>
+              ) : (
+                <Button
+                  type="button"
+                  variant="outline"
+                  className="w-full"
+                  disabled={uploading}
+                  onClick={() => fileInputRef.current?.click()}
+                >
+                  <Upload className="w-4 h-4 ml-2" />
+                  {uploading ? "מעלה..." : "העלה תמונה"}
+                </Button>
+              )}
             </div>
             <Button
               onClick={handleSave}
