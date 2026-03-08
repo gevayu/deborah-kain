@@ -17,6 +17,19 @@ import photo2Webp from "@/assets/phototherapy-2.jpg?format=webp&quality=80";
 import photo3Webp from "@/assets/phototherapy-3.jpg?format=webp&quality=80";
 import photo4Webp from "@/assets/phototherapy-4.jpg?format=webp&quality=80";
 import photo5Webp from "@/assets/phototherapy-5.jpg?format=webp&quality=80";
+import FeaturedImages from "@/components/FeaturedImages";
+import pf1 from "@/assets/phototherapy-featured-1.jpg";
+import pf2 from "@/assets/phototherapy-featured-2.jpg";
+import pf3 from "@/assets/phototherapy-featured-3.jpg";
+import pf1Webp from "@/assets/phototherapy-featured-1.jpg?format=webp&quality=80";
+import pf2Webp from "@/assets/phototherapy-featured-2.jpg?format=webp&quality=80";
+import pf3Webp from "@/assets/phototherapy-featured-3.jpg?format=webp&quality=80";
+
+const featuredImages = [
+  { src: pf1, webp: pf1Webp, alt: "התבוננות בצילום אישי", caption: "התבוננות בצילום — רגע של חיבור עמוק לתמונה שמספרת את הסיפור שלנו" },
+  { src: pf2, webp: pf2Webp, alt: "עבודה עם תמונות משפחתיות", caption: "חקירת שורשים — מגלים סיפורים חדשים דרך אלבומים משפחתיים ותמונות ארכיוניות" },
+  { src: pf3, webp: pf3Webp, alt: "צילום מודע בטבע", caption: "צילום מודע — ללכוד את העולם מזווית אישית ואותנטית" },
+];
 
 const galleryImages = [
   { src: photo1, webp: photo1Webp, alt: "עבודת פוטותרפיה 1" },
@@ -227,6 +240,9 @@ const Phototherapy = () => {
                 הצטרפו אלינו למסע
               </a>
             </div>
+
+            {/* Featured Images */}
+            <FeaturedImages images={featuredImages} title="רגעים מהסדנאות" />
           </motion.div>
         </div>
       </section>
