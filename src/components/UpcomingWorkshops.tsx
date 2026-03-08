@@ -80,7 +80,7 @@ const UpcomingWorkshops = ({ filterType }: UpcomingWorkshopsProps) => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: i * 0.1 }}
-              className="bg-card/80 backdrop-blur-sm rounded-2xl overflow-hidden border border-border/50"
+              className="group bg-card/80 backdrop-blur-sm rounded-2xl overflow-hidden border border-border/50 transition-colors duration-500"
               dir="rtl"
             >
               {/* Image strip */}
@@ -91,13 +91,13 @@ const UpcomingWorkshops = ({ filterType }: UpcomingWorkshopsProps) => {
                 const imgs = stripImages[category];
                 const img = imgs[i % imgs.length];
                 return (
-                  <div className="h-24 md:h-28 w-full relative overflow-hidden cursor-pointer group/strip">
-                    <img src={img} alt="" className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover/strip:scale-110" />
-                    <div className="absolute inset-0 bg-gradient-to-t from-emerald-800/40 via-emerald-600/20 to-emerald-400/10 transition-opacity duration-500 group-hover/strip:opacity-50" />
+                  <div className="h-24 md:h-28 w-full relative overflow-hidden">
+                    <img src={img} alt="" className="w-full h-full object-cover transition-transform duration-[1200ms] ease-out group-hover:scale-110" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-emerald-800/40 via-emerald-600/20 to-emerald-400/10 transition-opacity duration-500 group-hover:opacity-50" />
                   </div>
                 );
               })()}
-              <div className="p-6 md:p-8">
+              <div className="p-6 md:p-8 transition-colors duration-500 group-hover:bg-primary/5">
               {filterType === "all" && workshop.types?.length > 0 && (
                 <span className="inline-block text-xs font-body font-medium px-3 py-1 rounded-full bg-primary/10 text-primary mb-3">
                   {workshop.types.includes("phototherapy") && workshop.types.includes("soul-collage")
