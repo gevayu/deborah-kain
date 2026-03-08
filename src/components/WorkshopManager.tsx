@@ -96,7 +96,9 @@ const WorkshopManager = () => {
       target_audience: w.target_audience,
       cost: w.cost,
       types: w.types || [],
+      image_url: w.image_url || "",
     });
+    setImagePreview(w.image_url || null);
     setDialogOpen(true);
   };
 
