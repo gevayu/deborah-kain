@@ -122,7 +122,8 @@ const WorkshopManager = () => {
       description: form.description,
       target_audience: form.target_audience,
       cost: form.cost,
-    types: form.types as ("phototherapy" | "soul-collage" | "general")[],
+      image_url: form.image_url || null,
+      types: form.types as ("phototherapy" | "soul-collage" | "soul-road" | "general")[],
     };
 
     let error;
