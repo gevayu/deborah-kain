@@ -227,6 +227,9 @@ const Phototherapy = () => {
                 הצטרפו אלינו למסע
               </a>
             </div>
+
+            {/* Featured Images */}
+            <FeaturedImages images={featuredImages} title="רגעים מהסדנאות" />
           </motion.div>
         </div>
       </section>

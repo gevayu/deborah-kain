@@ -3,6 +3,7 @@ import Navbar from "@/components/Navbar";
 import UpcomingWorkshops from "@/components/UpcomingWorkshops";
 import Footer from "@/components/Footer";
 import ImageGallery from "@/components/ImageGallery";
+import FeaturedImages from "@/components/FeaturedImages";
 import OptimizedImage from "@/components/OptimizedImage";
 import soulCollageHero from "@/assets/soul-collage-hero.jpg";
 import soulCollageHeroWebp from "@/assets/soul-collage-hero.jpg?format=webp&quality=80";
