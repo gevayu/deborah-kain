@@ -80,7 +80,9 @@ const WorkshopManager = () => {
       target_audience: "",
       cost: "",
       types: [],
+      image_url: "",
     });
+    setImagePreview(null);
     setDialogOpen(true);
   };
 
