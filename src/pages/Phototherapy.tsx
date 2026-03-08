@@ -2,6 +2,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useState, useCallback, useEffect } from "react";
 import { X, ChevronLeft, ChevronRight } from "lucide-react";
 import Navbar from "@/components/Navbar";
+import UpcomingWorkshops from "@/components/UpcomingWorkshops";
 import Footer from "@/components/Footer";
 import OptimizedImage from "@/components/OptimizedImage";
 import phototherapyHero from "@/assets/phototherapy-hero.jpg";
