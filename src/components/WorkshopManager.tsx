@@ -27,6 +27,7 @@ interface Workshop {
   target_audience: string;
   cost: string;
   types: string[];
+  image_url: string | null;
 }
 
 const WORKSHOP_TYPES = [
