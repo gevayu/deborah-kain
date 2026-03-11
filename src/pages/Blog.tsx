@@ -37,7 +37,7 @@ const Blog = () => {
     <div className="min-h-screen">
       <Navbar />
 
-      <section className="pt-24 pb-16 md:pt-32 md:pb-24 bg-warm-gradient">
+      <section className="pt-32 pb-16 md:pt-40 md:pb-24 bg-warm-gradient">
         <div className="container mx-auto px-4 text-center">
           <motion.h1
             initial={{ opacity: 0, y: 30 }}

@@ -47,7 +47,7 @@ const SoulCollage = () => {
       <Navbar />
 
       {/* Hero */}
-      <section className="relative pt-24 pb-16 md:pt-32 md:pb-24">
+      <section className="relative pt-32 pb-16 md:pt-40 md:pb-24">
         <div className="absolute inset-0">
           <OptimizedImage
             src={soulCollageHero}
