@@ -11,7 +11,7 @@ import About from "./pages/About";
 import Services from "./pages/Services";
 import SoulCollage from "./pages/SoulCollage";
 import Phototherapy from "./pages/Phototherapy";
-import Journey from "./pages/Journey";
+
 import FAQ from "./pages/FAQ";
 import Blog from "./pages/Blog";
 import BlogPost from "./pages/BlogPost";
