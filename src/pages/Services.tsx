@@ -82,7 +82,7 @@ const Services = () => {
             width={1920}
             height={1080}
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-background/70 via-background/50 to-background" />
+          <div className="absolute inset-0 bg-gradient-to-b from-background/60 via-background/40 to-background" />
         </div>
         <div className="relative container mx-auto px-4 text-center">
           <motion.h1
