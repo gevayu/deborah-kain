@@ -16,9 +16,10 @@ const navItems = [
       { label: "פוטותרפיה", href: "/services/phototherapy" },
     ],
   },
-  { label: "המסע האישי", href: "/journey" },
+  { label: "סול קולאז'", href: "/services/soul-collage" },
+  { label: "פוטותרפיה", href: "/services/phototherapy" },
   { label: "שאלות נפוצות", href: "/faq" },
-  { label: "החיים עצמם", href: "/blog" },
+  { label: "החיים עצמם - בלוג", href: "/blog" },
   { label: "צרו קשר", href: "/contact" },
 ];
 
