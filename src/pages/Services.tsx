@@ -16,6 +16,8 @@ import workshopAnnual from "@/assets/workshop-annual.jpg";
 import workshopAnnualWebp from "@/assets/workshop-annual.jpg?format=webp&quality=80";
 import workshopSummer from "@/assets/workshop-summer.jpg";
 import workshopSummerWebp from "@/assets/workshop-summer.jpg?format=webp&quality=80";
+import workshopCourses from "@/assets/workshop-courses.jpg";
+import workshopCoursesWebp from "@/assets/workshop-courses.jpg?format=webp&quality=80";
 
 const services = [
   {
@@ -57,6 +59,8 @@ const services = [
     title: "קורסים והרצאות עומק",
     desc: "למעוניינים בהתעמקות ולמידה שיטתית — מוצעים קורסים רבי-שלבים סביב תכנים כגון חקר העצמי, דימויים, מנהיגות רגשית ועבודה קבוצתית. כל קורס בנוי במבנה מודולרי, המאפשר למשתתפים לנוע בקצב אישי.",
     link: null,
+    image: workshopCourses,
+    webp: workshopCoursesWebp,
   },
 ];
 
