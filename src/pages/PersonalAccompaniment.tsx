@@ -136,7 +136,7 @@ const PersonalAccompaniment = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: i * 0.1 }}
-                className="bg-primary/5 backdrop-blur-sm rounded-xl p-6 border border-primary/15"
+                className="bg-primary/5 backdrop-blur-sm rounded-xl p-6 border border-primary/15 w-full md:w-[calc(50%-12px)] lg:w-[calc(33.333%-16px)]"
               >
                 <h3 className="text-xl font-heading font-bold text-foreground mb-3">
                   {item.title}
