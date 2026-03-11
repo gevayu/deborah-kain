@@ -4,7 +4,6 @@ import { Menu, X, ChevronDown } from "lucide-react";
 import logo from "@/assets/logo.png";
 
 const navItems = [
-  { label: "בית", href: "/" },
   { label: "אודות", href: "/about" },
   {
     label: "השירותים שלנו",
