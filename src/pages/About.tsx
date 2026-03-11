@@ -113,7 +113,7 @@ const About = () => {
             transition={{ duration: 0.8 }}
           >
             <h2 className="text-3xl md:text-4xl font-heading font-bold text-foreground mb-8">
-              🌿 הגישה שלנו
+              הגישה שלנו
             </h2>
             <p className="text-lg md:text-xl text-muted-foreground font-body leading-relaxed mb-8">
               אנחנו לא מציעים פתרונות מהירים או מתכונים קבועים.
