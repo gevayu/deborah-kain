@@ -66,7 +66,7 @@ const Services = () => {
       <Navbar />
 
       {/* Hero */}
-      <section className="relative pt-32 pb-16 md:pt-40 md:pb-24">
+      <section className="relative pt-36 pb-16 md:pt-44 md:pb-24">
         <div className="absolute inset-0">
           <OptimizedImage
             src={servicesHero}
