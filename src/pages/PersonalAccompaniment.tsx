@@ -183,23 +183,11 @@ const PersonalAccompaniment = () => {
               <p className="text-muted-foreground font-body leading-relaxed mb-4">
                 הליווי מתאים לך אם את.ה מרגיש/ה שמשהו בחיים מבקש תשומת לב — גם אם אין לך מילים מדויקות לתאר מה.
               </p>
-              <ul className="space-y-3 text-muted-foreground font-body leading-relaxed">
-                <li className="flex items-start gap-2">
-                  <span className="text-primary mt-1">✦</span>
-                  <span>למי שעומד/ת בפרשת דרכים ומחפש/ת בהירות</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="text-primary mt-1">✦</span>
-                  <span>למי שעובר/ת תקופה של שינוי או אובדן ומחפש/ת עוגן</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="text-primary mt-1">✦</span>
-                  <span>למי שרוצה להעמיק את ההיכרות עם עצמו/ה</span>
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="text-primary mt-1">✦</span>
-                  <span>למי שפשוט מרגיש/ה שהגיע הזמן — לעצור, להקשיב, ולתת מקום למה שחי בפנים</span>
-                </li>
+              <ul className="list-disc list-inside space-y-3 text-muted-foreground font-body leading-relaxed pr-2">
+                <li>למי שעומד/ת בפרשת דרכים ומחפש/ת בהירות</li>
+                <li>למי שעובר/ת תקופה של שינוי או אובדן ומחפש/ת עוגן</li>
+                <li>למי שרוצה להעמיק את ההיכרות עם עצמו/ה</li>
+                <li>למי שפשוט מרגיש/ה שהגיע הזמן — לעצור, להקשיב, ולתת מקום למה שחי בפנים</li>
               </ul>
             </motion.div>
           </div>
