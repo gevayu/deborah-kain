@@ -114,7 +114,7 @@ const BlogPost = () => {
     <div className="min-h-screen">
       <BlogPostJsonLd {...post} />
       <Navbar />
-      <article className="pt-36 pb-16 md:pt-44">
+      <article className="pt-40 pb-16 md:pt-52">
         <div className="container mx-auto px-4 max-w-3xl">
           <Link to="/blog" className="inline-flex items-center gap-2 text-primary hover:underline font-body mb-8">
             <ArrowRight className="w-4 h-4" />

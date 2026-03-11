@@ -13,7 +13,7 @@ const About = () => {
       <Navbar />
 
       {/* Hero */}
-      <section className="relative pt-36 pb-16 md:pt-44 md:pb-24">
+      <section className="relative pt-40 pb-16 md:pt-52 md:pb-24">
         <div className="absolute inset-0">
           <OptimizedImage
             src={aboutHero}
