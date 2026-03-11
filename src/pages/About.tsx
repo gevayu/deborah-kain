@@ -170,7 +170,7 @@ const About = () => {
             transition={{ duration: 0.8 }}
           >
             <h2 className="text-3xl md:text-4xl font-heading font-bold text-foreground mb-8">
-              ✨ למי מתאים Soul Road?
+              למי מתאים Soul Road?
             </h2>
             <p className="text-lg text-muted-foreground font-body mb-6">זה בשבילך אם אתם:</p>
             <ul className="space-y-3 text-lg text-muted-foreground font-body">
