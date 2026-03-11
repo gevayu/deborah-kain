@@ -161,7 +161,7 @@ const About = () => {
       </section>
 
       {/* Who is it for */}
-      <section className="py-16 md:py-24 bg-background">
+      <section className="py-8 md:py-12 bg-background">
         <div className="container mx-auto px-4 max-w-3xl">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
