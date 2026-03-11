@@ -149,7 +149,7 @@ const About = () => {
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.6, delay: i * 0.1 }}
-                  className="bg-card/60 backdrop-blur-sm rounded-xl p-6 border border-border/50"
+                  className="bg-primary/5 backdrop-blur-sm rounded-xl p-6 border border-primary/15"
                 >
                   <h3 className="text-xl font-heading font-bold text-foreground mb-2">{item.title}</h3>
                   <p className="text-muted-foreground font-body leading-relaxed">{item.desc}</p>
