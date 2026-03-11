@@ -4,7 +4,6 @@ import { Menu, X, ChevronDown } from "lucide-react";
 import logo from "@/assets/logo.png";
 
 const navItems = [
-  { label: "בית", href: "/" },
   { label: "אודות", href: "/about" },
   {
     label: "השירותים שלנו",
@@ -30,8 +29,11 @@ const Navbar = () => {
   return (
     <nav className="fixed top-0 right-0 left-0 z-50 bg-background/80 backdrop-blur-md border-b border-border/50">
       <div className="container mx-auto flex items-center justify-between py-3 px-4">
-        <Link to="/" className="flex items-center gap-2">
+        <Link to="/" className="flex items-center gap-3">
           <img src={logo} alt="SoulRoad - דבורה קיין רייניש" className="h-[6.75rem] w-auto" />
+          <span className="text-foreground/70 font-body text-sm leading-tight text-right">
+            פסיכולוגית מומחית,<br />פוטותרפיסטית ומלווה רוחנית
+          </span>
         </Link>
 
         {/* Desktop Nav */}
