@@ -66,7 +66,7 @@ const PersonalAccompaniment = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.3, duration: 0.8 }}
-            className="text-xl md:text-2xl text-muted-foreground font-body max-w-3xl mx-auto leading-relaxed"
+            className="text-xl md:text-2xl text-muted-foreground font-body max-w-2xl mx-auto leading-relaxed"
           >
             לפעמים מה שאנחנו צריכים זה לא עוד תשובה מבחוץ — אלא מישהו שיהיה לצידנו בזמן שהתשובה מתגלה מבפנים.
           </motion.p>
