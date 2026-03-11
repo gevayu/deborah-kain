@@ -190,7 +190,7 @@ const About = () => {
               ))}
             </ul>
 
-            <div className="mt-12 bg-card/60 rounded-xl p-8 border border-border/50 text-center">
+            <div className="mt-12 bg-primary/10 rounded-xl p-8 border border-primary/20 text-center">
               <p className="text-muted-foreground font-body mb-6">
                 שביל הנפש הוא מסע של צמיחה, חיבור ועומק — אך הוא אינו תחליף לטיפול פסיכולוגי או פסיכיאטרי במצבי משבר.
               </p>
