@@ -5,8 +5,7 @@ const footerLinks = [
   { label: "בית", href: "/" },
   { label: "אודות", href: "/about" },
   { label: "השירותים שלנו", href: "/services" },
-  { label: "המסע האישי", href: "/journey" },
-  { label: "החיים עצמם", href: "/blog" },
+  { label: "החיים עצמם - בלוג", href: "/blog" },
   { label: "צרו קשר", href: "/contact" },
 ];
 
