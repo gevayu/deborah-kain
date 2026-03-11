@@ -10,7 +10,7 @@ const navItems = [
     label: "השירותים שלנו",
     href: "/services",
     children: [
-      { label: "ליווי אישי", href: "/services" },
+      { label: "ליווי אישי", href: "/services/personal" },
       { label: "סדנאות קבוצתיות", href: "/services" },
       { label: "סול קולאז'", href: "/services/soul-collage" },
       { label: "פוטותרפיה", href: "/services/phototherapy" },

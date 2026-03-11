@@ -16,6 +16,7 @@ import FAQ from "./pages/FAQ";
 import Blog from "./pages/Blog";
 import BlogPost from "./pages/BlogPost";
 import Contact from "./pages/Contact";
+import PersonalAccompaniment from "./pages/PersonalAccompaniment";
 import AdminLogin from "./pages/AdminLogin";
 import AdminDashboard from "./pages/AdminDashboard";
 import NotFound from "./pages/NotFound";
@@ -35,6 +36,7 @@ const App = () => (
           <Route path="/" element={<Index />} />
           <Route path="/about" element={<About />} />
           <Route path="/services" element={<Services />} />
+          <Route path="/services/personal" element={<PersonalAccompaniment />} />
           <Route path="/services/soul-collage" element={<SoulCollage />} />
           <Route path="/services/phototherapy" element={<Phototherapy />} />
           <Route path="/journey" element={<Journey />} />
