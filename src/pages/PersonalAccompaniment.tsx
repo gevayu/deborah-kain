@@ -206,31 +206,6 @@ const PersonalAccompaniment = () => {
         </div>
       </section>
 
-      {/* Community */}
-      <section className="py-16 md:py-24 bg-section-alt">
-        <div className="container mx-auto px-4">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-            className="max-w-3xl mx-auto text-center"
-          >
-            <h2 className="text-3xl md:text-4xl font-heading font-bold text-foreground mb-6">
-              עבודה קהילתית — כי צמיחה קורית גם ביחד
-            </h2>
-            <p className="text-muted-foreground font-body leading-relaxed mb-6">
-              לצד הליווי האישי, אני מקיימת סדנאות, קבוצות ומפגשים — כי יש משהו שקורה רק בנוכחות של אחרים. במעגל של אמון ושיתוף, מתאפשר שיקוף שלא קיים כשאנחנו לבד. מקום משותף שבו אפשר להיות בדיוק מי שאת.ה, לדעת שאת.ה לא לבד/ה בדרך, ולגלות שהסיפור שלך מהדהד גם אצל אחרים.
-            </p>
-            <Link
-              to="/services"
-              className="inline-block text-primary font-body font-medium hover:underline text-lg"
-            >
-              לכל השירותים והסדנאות ←
-            </Link>
-          </motion.div>
-        </div>
-      </section>
 
       {/* CTA */}
       <section className="py-16 md:py-24 bg-background">
