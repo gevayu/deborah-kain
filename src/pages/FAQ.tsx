@@ -2,6 +2,8 @@ import { motion } from "framer-motion";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from "@/components/ui/accordion";
+import OptimizedImage from "@/components/OptimizedImage";
+import soulcollageImg from "@/assets/soulcollage-featured-1.jpg";
 
 const faqs = [
   {
