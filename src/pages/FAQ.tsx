@@ -100,6 +100,7 @@ const FAQ = () => {
               </motion.div>
             ))}
           </Accordion>
+          </div>
         </div>
       </section>
 
