@@ -155,13 +155,13 @@ const HeroSection = () => {
             
             <a
               href="/services"
-              className="inline-block bg-primary text-primary-foreground px-8 py-4 rounded-lg font-body font-medium text-base hover:opacity-90 transition-opacity">
+className="inline-block bg-primary text-primary-foreground px-8 py-4 rounded-lg font-body font-medium text-lg hover:opacity-90 transition-opacity">
               
               ליווי אישי
             </a>
             <a
               href="/services"
-              className="inline-block border-2 border-white text-white px-8 py-4 rounded-lg font-body font-medium text-base hover:bg-white/10 transition-colors">
+              className="inline-block border-2 border-white text-white px-8 py-4 rounded-lg font-body font-medium text-lg hover:bg-white/10 transition-colors">
               
               סדנאות קבוצתיות
             </a>
