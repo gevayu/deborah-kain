@@ -7,7 +7,7 @@ import { Button } from "@/components/ui/button";
 
 const AboutPreview = () => {
   return (
-    <section className="py-20 md:py-28 bg-section-alt">
+    <section className="py-14 md:py-20 bg-section-alt">
       <div className="container mx-auto px-4 max-w-4xl">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
