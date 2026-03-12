@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 
 const IntroSection = () => {
   return (
-    <section className="py-20 md:py-28 bg-warm-gradient">
+    <section className="py-14 md:py-20 bg-warm-gradient">
       <div className="container mx-auto px-4">
         <motion.div
           initial={{ opacity: 0, y: 30, filter: "blur(8px)" }}
