@@ -2,6 +2,8 @@ import { motion } from "framer-motion";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from "@/components/ui/accordion";
+import OptimizedImage from "@/components/OptimizedImage";
+import soulcollageImg from "@/assets/soulcollage-featured-1.jpg";
 
 const faqs = [
   {
@@ -65,8 +67,17 @@ const FAQ = () => {
       </section>
 
       <section className="py-16 md:py-24 bg-background">
-        <div className="container mx-auto px-4 max-w-3xl">
-          <Accordion type="single" collapsible className="space-y-4">
+        <div className="container mx-auto px-4 max-w-5xl">
+          <div className="mb-12 rounded-2xl overflow-hidden">
+            <OptimizedImage
+              src={soulcollageImg}
+              alt="סדנאות קבוצתיות - חוויות יצירתיות"
+              className="w-full h-64 md:h-80 object-cover"
+              loading="eager"
+            />
+          </div>
+          <div className="max-w-3xl mx-auto">
+          <Accordion type="single" defaultValue="item-0" collapsible className="space-y-4">
             {faqs.map((faq, index) => (
               <motion.div
                 key={index}
@@ -89,6 +100,7 @@ const FAQ = () => {
               </motion.div>
             ))}
           </Accordion>
+          </div>
         </div>
       </section>
 
