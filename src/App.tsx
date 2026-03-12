@@ -17,6 +17,7 @@ import Blog from "./pages/Blog";
 import BlogPost from "./pages/BlogPost";
 import Contact from "./pages/Contact";
 import PersonalAccompaniment from "./pages/PersonalAccompaniment";
+import GroupWorkshops from "./pages/GroupWorkshops";
 import AdminLogin from "./pages/AdminLogin";
 import AdminDashboard from "./pages/AdminDashboard";
 import NotFound from "./pages/NotFound";
