@@ -12,62 +12,62 @@ import heroClouds from "@/assets/hero-clouds.jpg";
 import heroCloudsWebp from "@/assets/hero-clouds.jpg?format=webp&quality=80";
 
 const heroImages = [
-  { jpg: heroBg, webp: heroBgWebp },
-  { jpg: heroWater, webp: heroWaterWebp },
-  { jpg: heroEarth, webp: heroEarthWebp },
-  { jpg: heroFire, webp: heroFireWebp },
-  { jpg: heroClouds, webp: heroCloudsWebp },
-];
+{ jpg: heroBg, webp: heroBgWebp },
+{ jpg: heroWater, webp: heroWaterWebp },
+{ jpg: heroEarth, webp: heroEarthWebp },
+{ jpg: heroFire, webp: heroFireWebp },
+{ jpg: heroClouds, webp: heroCloudsWebp }];
+
 
 const INTERVAL = 6000;
 
 const Particles = () => {
   const particles = useMemo(
     () =>
-      Array.from({ length: 70 }, (_, i) => ({
-        id: i,
-        x: Math.random() * 100,
-        y: 50 + Math.random() * 50,
-        size: Math.random() * 10 + 5,
-        duration: Math.random() * 10 + 8,
-        delay: Math.random() * 6,
-        opacity: Math.random() * 0.6 + 0.4,
-        drift: Math.random() * 50 - 25,
-      })),
+    Array.from({ length: 70 }, (_, i) => ({
+      id: i,
+      x: Math.random() * 100,
+      y: 50 + Math.random() * 50,
+      size: Math.random() * 10 + 5,
+      duration: Math.random() * 10 + 8,
+      delay: Math.random() * 6,
+      opacity: Math.random() * 0.6 + 0.4,
+      drift: Math.random() * 50 - 25
+    })),
     []
   );
 
   return (
     <div className="absolute inset-0 z-[2] pointer-events-none overflow-hidden">
-      {particles.map((p) => (
-        <motion.div
-          key={p.id}
-          className="absolute rounded-full"
-          style={{
-            width: p.size,
-            height: p.size,
-            left: `${p.x}%`,
-            top: `${p.y}%`,
-            opacity: 0,
-            background: `radial-gradient(circle, rgba(255,255,255,1), rgba(255,255,255,0.4))`,
-            boxShadow: `0 0 ${p.size * 3}px ${p.size}px rgba(255,255,255,0.5)`,
-          }}
-          animate={{
-            y: [0, -100, -220],
-            x: [0, p.drift, p.drift * 0.5],
-            opacity: [0, p.opacity, p.opacity * 0.7, 0],
-            scale: [0.5, 1.3, 0.6],
-          }}
-          transition={{
-            duration: p.duration,
-            delay: p.delay,
-            repeat: Infinity,
-            ease: "easeInOut",
-          }}
-        />
-      ))}
-    </div>
-  );
+      {particles.map((p) =>
+      <motion.div
+        key={p.id}
+        className="absolute rounded-full"
+        style={{
+          width: p.size,
+          height: p.size,
+          left: `${p.x}%`,
+          top: `${p.y}%`,
+          opacity: 0,
+          background: `radial-gradient(circle, rgba(255,255,255,1), rgba(255,255,255,0.4))`,
+          boxShadow: `0 0 ${p.size * 3}px ${p.size}px rgba(255,255,255,0.5)`
+        }}
+        animate={{
+          y: [0, -100, -220],
+          x: [0, p.drift, p.drift * 0.5],
+          opacity: [0, p.opacity, p.opacity * 0.7, 0],
+          scale: [0.5, 1.3, 0.6]
+        }}
+        transition={{
+          duration: p.duration,
+          delay: p.delay,
+          repeat: Infinity,
+          ease: "easeInOut"
+        }} />
+
+      )}
+    </div>);
+
 };
 
 const HeroSection = () => {
@@ -85,7 +85,7 @@ const HeroSection = () => {
 
   const { scrollYProgress } = useScroll({
     target: sectionRef,
-    offset: ["start start", "end start"],
+    offset: ["start start", "end start"]
   });
   const bgY = useTransform(scrollYProgress, [0, 1], ["0%", "30%"]);
 
@@ -100,8 +100,8 @@ const HeroSection = () => {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 1.5, ease: "easeInOut" }}
-            className="absolute inset-0"
-          >
+            className="absolute inset-0">
+            
             <picture>
               <source srcSet={heroImages[currentIndex].webp} type="image/webp" />
               <img
@@ -112,8 +112,8 @@ const HeroSection = () => {
                 decoding={currentIndex === 0 ? "sync" : "async"}
                 width={1920}
                 height={1080}
-                {...(currentIndex === 0 ? { fetchPriority: "high" } as any : {})}
-              />
+                {...currentIndex === 0 ? { fetchPriority: "high" } as any : {}} />
+              
             </picture>
           </motion.div>
         </AnimatePresence>
@@ -129,8 +129,8 @@ const HeroSection = () => {
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, ease: "easeOut" }}
-          className="max-w-4xl mx-auto bg-black/25 backdrop-blur-md rounded-3xl py-12 px-6 md:px-12"
-        >
+          className="max-w-4xl mx-auto bg-black/25 backdrop-blur-md rounded-3xl py-12 px-6 md:px-12">
+          
           <h1 className="text-4xl md:text-6xl lg:text-7xl font-heading font-bold text-white leading-tight mb-6 drop-shadow-[0_2px_6px_rgba(0,0,0,0.5)]">
             ברוכים הבאים למסע
             <br />
@@ -141,28 +141,28 @@ const HeroSection = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.5, duration: 0.8 }}
-            className="text-xl md:text-2xl text-white/85 font-body leading-relaxed mb-10 max-w-2xl mx-auto drop-shadow-[0_1px_3px_rgba(0,0,0,0.3)]"
-          >
-            כאן, בין המילים והדימויים, בין הדמיון והמציאות — 
-            נפתח יחד דלת לעולם הפנימי שלך
+            className="text-xl md:text-2xl text-white/85 font-body leading-relaxed mb-10 max-w-2xl mx-auto drop-shadow-[0_1px_3px_rgba(0,0,0,0.3)]">
+            
+             בין המילים והדימויים, בין הדמיון והמציאות — נפתח יחד דלת לעולם הפנימי שלך
+          
           </motion.p>
 
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.8, duration: 0.6 }}
-            className="flex flex-col sm:flex-row gap-4 justify-center"
-          >
+            className="flex flex-col sm:flex-row gap-4 justify-center">
+            
             <a
               href="/services"
-              className="inline-block bg-primary text-primary-foreground px-8 py-4 rounded-lg font-body font-medium text-base hover:opacity-90 transition-opacity"
-            >
+              className="inline-block bg-primary text-primary-foreground px-8 py-4 rounded-lg font-body font-medium text-base hover:opacity-90 transition-opacity">
+              
               ליווי אישי
             </a>
             <a
               href="/services"
-              className="inline-block border-2 border-white text-white px-8 py-4 rounded-lg font-body font-medium text-base hover:bg-white/10 transition-colors"
-            >
+              className="inline-block border-2 border-white text-white px-8 py-4 rounded-lg font-body font-medium text-base hover:bg-white/10 transition-colors">
+              
               סדנאות קבוצתיות
             </a>
           </motion.div>
@@ -171,18 +171,18 @@ const HeroSection = () => {
 
       {/* Image indicators */}
       <div className="absolute bottom-20 left-1/2 -translate-x-1/2 z-10 flex gap-2">
-        {heroImages.map((_, i) => (
-          <button
-            key={i}
-            onClick={() => setCurrentIndex(i)}
-            className={`w-2 h-2 rounded-full transition-all duration-500 ${
-              i === currentIndex
-                ? "bg-primary/80 w-6"
-                : "bg-primary/30 hover:bg-primary/50"
-            }`}
-            aria-label={`תמונה ${i + 1}`}
-          />
-        ))}
+        {heroImages.map((_, i) =>
+        <button
+          key={i}
+          onClick={() => setCurrentIndex(i)}
+          className={`w-2 h-2 rounded-full transition-all duration-500 ${
+          i === currentIndex ?
+          "bg-primary/80 w-6" :
+          "bg-primary/30 hover:bg-primary/50"}`
+          }
+          aria-label={`תמונה ${i + 1}`} />
+
+        )}
       </div>
 
       {/* Scroll indicator */}
@@ -190,18 +190,18 @@ const HeroSection = () => {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1.5, duration: 0.8 }}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2"
-      >
+        className="absolute bottom-8 left-1/2 -translate-x-1/2">
+        
         <div className="w-6 h-10 rounded-full border-2 border-primary/40 flex justify-center pt-2">
           <motion.div
             animate={{ y: [0, 12, 0] }}
             transition={{ repeat: Infinity, duration: 1.5 }}
-            className="w-1.5 h-1.5 rounded-full bg-primary/60"
-          />
+            className="w-1.5 h-1.5 rounded-full bg-primary/60" />
+          
         </div>
       </motion.div>
-    </section>
-  );
+    </section>);
+
 };
 
 export default HeroSection;
