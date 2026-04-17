@@ -35,20 +35,6 @@ const services = [
     webp: workshopAnnualWebp,
   },
   {
-    title: "סדנאות סול קולאז'",
-    desc: "מסע אל הקולות שבפנים — יצירת קלפים אישיים שמייצגים את החלקים השונים בנו, דרך תמונות, אינטואיציה ודיאלוג פנימי.",
-    link: "/services/soul-collage",
-    image: soulCollageHero,
-    webp: soulCollageHeroWebp,
-  },
-  {
-    title: "סדנאות פוטותרפיה",
-    desc: "מגלים את עצמכם דרך העדשה — שילוב ייחודי של צילום ועבודה רגשית עמוקה לגילוי עצמי אמיתי.",
-    link: "/services/phototherapy",
-    image: phototherapyHero,
-    webp: phototherapyHeroWebp,
-  },
-  {
     title: "סדנאות ייעודיות לארגונים ולמוסדות",
     desc: "אנו מגיעים גם אל צוותים וארגונים: מביאים את עולם ה-SoulCollage וסדנאות ההתפתחות למרחבים מקצועיים, כפתרון להפגת עומס, לבניית אמון, שיפור תקשורת צוותית, יצירה משותפת וגיבוש.",
     link: null,
