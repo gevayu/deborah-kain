@@ -38,14 +38,11 @@ const AboutPreview = () => {
             <h2 className="text-3xl md:text-4xl font-heading font-bold text-foreground mb-4">
               דבורה קיין-רייניש
             </h2>
-            <p className="text-lg text-muted-foreground font-body leading-relaxed mb-4">
-              פסיכולוגית ומנחת קבוצות בפוטותרפיה וסולקולאז'. מתוך אמונה עמוקה שכל אחד.ת נושא.ת בתוכו חוכמה פנימית — אני מלווה אנשים במסע של גילוי עצמי, דרך דימויים, סמלים ותהליכים יצירתיים.
-            </p>
-            <p className="text-muted-foreground font-body leading-relaxed mb-6">
-              התפקיד שלי הוא לא לתקן, אלא להחזיק מראה — ולעזור לך לראות את הכוח הפנימי שתמיד היה שם.
+            <p className="text-lg text-muted-foreground font-body leading-relaxed mb-6">
+              פסיכולוגית מומחית, מלווה רוחנית ומנחת קבוצות. צלמת ואמנית וממשיכה ליצור, ללמוד ולחקור.
             </p>
             <Button asChild variant="outline" size="lg" className="rounded-lg">
-              <Link to="/about">עוד על השיטה</Link>
+              <Link to="/about">עוד עלי באודות</Link>
             </Button>
           </div>
         </motion.div>
