@@ -158,7 +158,7 @@ const About = () => {
             transition={{ duration: 0.8 }}
           >
             <h2 className="text-3xl md:text-4xl font-heading font-bold text-foreground mb-8">
-              למי מתאים Soul Road?
+              למי מתאים SoulRoad?
             </h2>
             <p className="text-lg text-muted-foreground font-body mb-6">זה בשבילך אם אתם:</p>
             <ul className="space-y-3 text-lg text-muted-foreground font-body">
@@ -180,7 +180,7 @@ const About = () => {
 
             <div className="mt-12 bg-primary/10 rounded-xl p-8 border border-primary/20 text-center">
               <p className="text-muted-foreground font-body mb-6">
-                שביל הנפש הוא מסע של צמיחה, חיבור ועומק — אך הוא אינו תחליף לטיפול פסיכולוגי או פסיכיאטרי במצבי משבר.
+                SoulRoad הוא מסע של צמיחה, חיבור ועומק — אך הוא אינו תחליף לטיפול פסיכולוגי או פסיכיאטרי במצבי משבר.
               </p>
               <p className="text-lg font-heading font-bold text-foreground mb-6">
                 אבל אם אתם במקום של חיפוש, רצון לצמיחה, ושאיפה לחיבור יותר עמוק — יש לכם כאן בית.
