@@ -8,7 +8,7 @@ add_filter('elementor/widget/render_content', function ($c) {
         $d = $t->description;
         return $d ? wpautop($d) : $c;
     }
-    if (strpos($c, 'איך לבחור מכונת קפה') !== false) {
+    if (strpos($c, 'איך בוחרים מכונת קפה') !== false) {
         $o = get_term_meta($t->term_id, 'esp_outro', true);
         return $o ? '<h3>איך בוחרים</h3>' . wpautop($o) : $c;
     }
